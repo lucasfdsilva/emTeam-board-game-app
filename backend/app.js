@@ -1,6 +1,8 @@
 const express = require('express');
 const expressLayouts = require('express-ejs-layouts');
 const mongoose = require('mongoose');
+const flash = require('connect-flash');
+const session = require('express-session');
 
 const app = express();
 
@@ -19,11 +21,33 @@ app.use(expressLayouts);
 app.set('view engine', 'ejs');
 
 
-//Bodyparser
+//Bodyparser Middleware
 app.use(express.urlencoded({ extended: false }));
 
 
-//Routes
+//Express Session Middleware
+app.use(
+    session({
+      secret: 'secret',
+      resave: true,
+      saveUninitialized: true
+    })
+  );
+
+
+//Connect Flash
+app.use(flash());
+
+
+//Global Variables
+app.use((req, res, next) => {
+    res.locals.success_msg = req.flash('success_msg');
+    res.locals.error_msg = req.flash('error_msg')
+    next();
+});
+
+
+//Routes Middleware
 app.use('/', require('./routes/index'));
 app.use('/users', require('./routes/users'));
 
