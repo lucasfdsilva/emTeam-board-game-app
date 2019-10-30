@@ -1,11 +1,11 @@
 const express = require('express');
 const routes = require('./routes');
 const mongoose = require('mongoose');
-const dbConfig = require('./config/database');
+require('dotenv/config');
 
 const app = express();
 
-mongoose.connect(dbConfig.MongoURI, {useNewUrlParser:true, useUnifiedTopology:true}, console.log('MongoDB Connected'));
+mongoose.connect(process.env.DB_CONNECTION, {useNewUrlParser:true, useUnifiedTopology:true}, () => console.log('MongoDB Connected'));
 
 app.use(express.json());
 app.use(routes);

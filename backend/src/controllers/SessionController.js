@@ -1,16 +1,37 @@
 const User = require('../models/User');
+const bcrypt = require('bcrypt');
 
 module.exports = {
     
     async store(req, res){
-        const { email } = req.body;
+        const { firstName, lastName, email, password } = req.body;
+        let msg;
 
         let user = await User.findOne({email: email});
 
         if (!user){
-            user = await User.create({ email });     
+                const salt = await bcrypt.genSalt();
+                const hashedPassword = await bcrypt.hash(password, salt);
+
+                user = await User.create({ firstName, lastName, email, password: hashedPassword });  
+                
+                msg = {
+                    text: 'New User Created', 
+                    firstName: `${firstName}`,
+                    lastName: `${lastName}`,
+                    email: `${email}`,
+                    password: `${password}`,
+                };
+        }else{
+            msg = {
+                text: 'User already registered', 
+                firstName: `${user.firstName}`,
+                lastName: `${user.lastName}`,
+                email: `${user.email}`,
+                password: `${user.password}`,
+            };
         }
 
-        return res.json(user);
+        return res.json(msg);
     }
 };
