@@ -18,4 +18,7 @@ openRoutes.post('/users/register', RegisterController.create);
 openRoutes.post('/users/login', LoginController.login)
 
 
-module.exports = openRoutes, protectedRoutes;
+module.exports = {
+    openRoutes: openRoutes,
+    protectedRoutes: protectedRoutes
+}
