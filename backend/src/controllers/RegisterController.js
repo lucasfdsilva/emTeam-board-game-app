@@ -5,38 +5,27 @@ module.exports = {
   async create(req, res) {
     const { firstName, lastName, email, password } = req.body;
 
-    let msg;
+    let userFromDB = await User.findOne({ email: email.toLowerCase() });
 
-    let user = await User.findOne({ email: email.toLowerCase() });
-
-    if (!user) {
+    if (!userFromDB) {
       const salt = await bcrypt.genSalt();
       const hashedPassword = await bcrypt.hash(password, salt);
 
-      user = await User.create({
-        firstName,
-        lastName,
+      let user = {
+        firstName: firstName,
+        lastName: lastName,
         email: email.toLowerCase(),
         password: hashedPassword
-      });
+      }
 
-      msg = {
-        text: "New User Created",
-        firstName: `${firstName}`,
-        lastName: `${lastName}`,
-        email: `${email}`,
-        password: `${password}`
-      };
+      await User.create(user);
+
+      res.json({ message: 'User Created Succesfully', user: user })
+
     } else {
-      msg = {
-        text: "User already registered",
-        firstName: `${user.firstName}`,
-        lastName: `${user.lastName}`,
-        email: `${user.email}`,
-        password: `${user.password}`
-      };
+      
+      res.json({ message: 'ERROR: User Already Registered', user: userFromDB })
+      
     }
-
-    return res.json(msg);
   }
 };
