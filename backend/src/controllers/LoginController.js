@@ -11,10 +11,11 @@ module.exports = {
     let userFromDB = await User.findOne({ email: email.toLowerCase() });
 
     if (!userFromDB) {
-      return res.status(404).json({message: 'Cannot find user'});
+      return res.status(400).json({message: 'User Not Found'});
     } else {
       try {
         let user = {
+            id: userFromDB.id,
             firstName: userFromDB.firstName,
             lastName: userFromDB.lastName,
             email: userFromDB.email,
@@ -24,12 +25,12 @@ module.exports = {
         if(await bcrypt.compare(password, user.password)){
             //JWT Auth is built here - After checking the user credentials (authentication)
 
-            const accessToken = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET);         
+            const accessToken = jwt.sign(user.id, process.env.ACCESS_TOKEN_SECRET);         
             
             res.status(200).json({message: 'User Logged in succesfully', accessToken: accessToken });
 
         } else {
-            res.status(401).json({message: 'Password is incorrect'});
+            res.status(400).json({message: 'Password is incorrect'});
         }
       } catch {
         res.status(500).send();

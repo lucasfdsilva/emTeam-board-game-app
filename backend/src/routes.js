@@ -1,12 +1,21 @@
 const express = require('express');
 
+//Middlewares
+const authMiddleware = require('./middlewares/auth');
+
 //Controllers
 const RegisterController = require('./controllers/RegisterController');
 const LoginController = require('./controllers/LoginController');
 
-const routes = express.Router();
+//Declaring Router Instances
+const openRoutes = express.Router();
+const protectedRoutes = express.Router();
 
-routes.post('/users/register', RegisterController.create);
-routes.post('/users/login', LoginController.login)
+protectedRoutes.use(authMiddleware)
 
-module.exports = routes;
+//Routes
+openRoutes.post('/users/register', RegisterController.create);
+openRoutes.post('/users/login', LoginController.login)
+
+
+module.exports = openRoutes, protectedRoutes;
