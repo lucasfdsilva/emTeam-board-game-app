@@ -11,7 +11,7 @@ module.exports = {
     let userFromDB = await User.findOne({ email: email.toLowerCase() });
 
     if (!userFromDB) {
-      return res.status(404).send("Cannot find user");
+      return res.status(404).json({message: 'Cannot find user'});
     } else {
       try {
         let user = {
@@ -29,7 +29,7 @@ module.exports = {
             res.json({message: 'User Logged in succesfully', accessToken: accessToken });
 
         } else {
-            res.send('Password is incorrect');
+            res.json({message: 'Password is incorrect'});
         }
       } catch {
         res.status(500).send();
