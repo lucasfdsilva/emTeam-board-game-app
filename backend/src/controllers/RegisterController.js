@@ -8,6 +8,7 @@ module.exports = {
     let userFromDB = await User.findOne({ email: email.toLowerCase() });
 
     if (!userFromDB) {
+      try {
       const salt = await bcrypt.genSalt();
       const hashedPassword = await bcrypt.hash(password, salt);
 
@@ -20,11 +21,14 @@ module.exports = {
 
       await User.create(user);
 
-      res.json({ message: 'User Created Succesfully', user: user })
+      res.status(201).json({ message: 'User Created Succesfully', user: user })
+    } catch {
+      res.status(500).res.send();
+    }
 
     } else {
       
-      res.json({ message: 'ERROR: User Already Registered', user: userFromDB })
+      res.status(403).json({ message: 'ERROR: User Already Registered', user: userFromDB })
       
     }
   }
