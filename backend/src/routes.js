@@ -17,7 +17,7 @@ protectedRoutes.use(authMiddleware)
 //Routes
 openRoutes.post('/users/register', RegisterController.create);
 openRoutes.post('/users/login', LoginController.login)
-openRoutes.post('/users/forgot_password', ForgotPasswordController.reset)
+openRoutes.post('/users/forgot_password', ForgotPasswordController.forgotPassword)
 
 
 module.exports = {

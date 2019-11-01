@@ -4,10 +4,11 @@ const User = require("../models/User");
 const jwt = require("jsonwebtoken");
 const crypto = require("crypto");
 const sgMail = require("@sendgrid/mail");
-const axios = require("axios");
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 module.exports = {
-  async reset(req, res) {
+
+  async forgotPassword(req, res) {
     const { email } = req.body;
 
     try {
@@ -31,7 +32,7 @@ module.exports = {
           }
         });
 
-        //SendGrid configuration & Email send - Email don't get sent...Suspect the account is inactive
+        //SendGrid configuration & Email send
         const msg = {
             to: `${ email }`,
             from: 'no-reply@emteam.ie',
@@ -39,12 +40,15 @@ module.exports = {
             html: `<p>Did you forget your password? Use this token to reset it: ${ token }</p>`
           };
         
-        sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-        sgMail.send(msg).then(console.log('SendGrid Service Email Sent'));
+        sgMail.send(msg)
+          .then(() => {
+            console.log('SendGrid Service Email Sent')
+            res.status(200).json({ message: 'Reset Password Email Sent Successfully', token: token, expiresAt: now });
+          }).catch((err) => {
+            console.log(err);
+            res.status(400).send({ message: 'Error on sending Password Reset Email '});
+        });
 
-
-        //Sends back response after completing tasks above
-        res.status(200).json({ message: 'Success', token: token, expiresAt: now });
       }
     } catch (err) {
       res.status(400).send({ message: 'Error on forgot password, try again' });
