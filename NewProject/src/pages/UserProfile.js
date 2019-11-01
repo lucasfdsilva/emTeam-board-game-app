@@ -3,28 +3,29 @@ import { StyleSheet, Text, View, StatusBar, TouchableOpacity } from 'react-nativ
 import {Actions} from 'react-native-router-flux';
 
 import Logo from '../components/Logo';
-import SignupForm from '../components/SignupForm';
 
-export default class Signup extends Component<{}>{
+
+export default class UserProfile extends Component<{}>{
 	login(){
 		Actions.login()
 	}
-    render(){
-        return (
+	render(){
+		return(
         <View style = {styles.container}>
             <Logo/>
-            <SignupForm type="Signup"/>
+            <Text>Email</Text>
+            <Text>Phone number</Text>
+            <Text>Bio</Text>
             <View style = {styles.signupTextContainer}>
-            	<Text style = {styles.signupText}> Already have an account? </Text>
+            	<Text style = {styles.signupText}> To go back click </Text>
             	<TouchableOpacity onPress={this.login}>
-            	<Text style = {styles.signupButton}> Sign In</Text>
+            	<Text style = {styles.signupButton}> here </Text>
             	</TouchableOpacity>
             </View>
         </View>
-        );
 
-    }
-
+		);
+	}
 
 }
 
