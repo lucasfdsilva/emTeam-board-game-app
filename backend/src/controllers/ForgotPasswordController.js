@@ -1,68 +1,53 @@
 require('dotenv').config();
-const bcrypt = require('bcrypt');
-const User = require('../models/User');
-const jwt = require('jsonwebtoken');
-const crypto = require('crypto');
-const mailer = require('../modules/mailer');
-const sgMail = require('@sendgrid/mail');
-const axios = require('axios');
+const bcrypt = require("bcrypt");
+const User = require("../models/User");
+const jwt = require("jsonwebtoken");
+const crypto = require("crypto");
+const sgMail = require("@sendgrid/mail");
+const axios = require("axios");
 
 module.exports = {
-    async reset(req, res){
-        const { email } = req.body;
+  async reset(req, res) {
+    const { email } = req.body;
 
-        try{
-            let userFromDB = await User.findOne({ email: email.toLowerCase() });
+    try {
+      let userFromDB = await User.findOne({ email: email.toLowerCase() });
 
-            //Checks if user exists in the Database
-            if(!userFromDB){
+      //Checks if user exists in the Database
+      if (!userFromDB) {
+        return res.status(400).send({ message: 'User Not Found' });
+      } else {
+        const token = crypto.randomBytes(20).toString('hex'); //creates a token using crypto to generate random 20 hex characters
 
-                return res.status(400).send({ message: 'User Not Found'});
+        //Creates an instance of date to be used as time limit for the token created above
+        const now = new Date();
+        now.setHours(now.getHours() + 1);
 
-            } else {
+        //Updates the user found using the email address with the token and token expiration time
+        await User.findOneAndUpdate(userFromDB.id, {
+          $set: {
+            passwordResetToken: token,
+            passwordResetExpires: now
+          }
+        });
 
-                const token = crypto.randomBytes(20).toString('hex'); //creates a token using crypto to generate random 20 hex characters
+        //SendGrid configuration & Email send - Email don't get sent...Suspect the account is inactive
+        const msg = {
+            to: `${ email }`,
+            from: 'no-reply@emteam.ie',
+            subject: 'Password Reset - EmTeam',
+            html: `<p>Did you forget your password? Use this token to reset it: ${ token }</p>`
+          };
+        
+        sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+        sgMail.send(msg).then(console.log('SendGrid Service Email Sent'));
 
-                //Creates an instance of date to be used as time limit for the token created above
-                const now = new Date();
-                now.setHours(now.getHours() + 1);
 
-                //Updates the user found using the email address with the token and token expiration time
-                await User.findOneAndUpdate(userFromDB.id, {
-                    '$set':{
-                        passwordResetToken: token,
-                        passwordResetExpires: now
-                    }
-                });
-
-                const msg = {
-                    to: 'lucas.silva00@outlook.ie',
-                    from: 'michely_beki@hotmail.com',
-                    subject: 'Sending with Twilio SendGrid is Fun',
-                    text: 'and easy to do anywhere, even with Node.js',
-                    html: '<strong>and easy to do anywhere, even with Node.js</strong>'
-                };
-
-                sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-                sgMail.send(msg).then(console.log('Email Sent'));
-
-                /*//Sends Email using template stored in "Resources" to the email address received on request
-                mailer.sendMail({
-                    to: email,
-                    from: 'lucas.silva00@outlook.ie',
-                    template: 'auth/forgot_password',
-                    context: { token },
-                }, (err) => {
-                    if (err){
-                        return res.status(400).send({ message: 'Cannot send forgot email password'});
-                    }
-                })*/
-
-                //Sends back response after completing tasks above
-                res.status(200).json({ message: 'Success', token: token, expiresAt: now })
-            }
-        } catch (err){
-            res.status(400).send({ message: 'Error on forgot password, try again'});
-        }
+        //Sends back response after completing tasks above
+        res.status(200).json({ message: 'Success', token: token, expiresAt: now });
+      }
+    } catch (err) {
+      res.status(400).send({ message: 'Error on forgot password, try again' });
     }
+  }
 };
