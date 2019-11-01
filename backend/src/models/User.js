@@ -18,15 +18,19 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  verified:{
+    type: Boolean,
+    default: false
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now
+  },
   passwordResetToken: {
     type: String,
   },
   passwordResetExpires: {
     type: Date,
-  },
-  createdAt: {
-    type: Date,
-    default: Date.now
   }
 });
 

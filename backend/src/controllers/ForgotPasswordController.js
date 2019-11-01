@@ -1,8 +1,11 @@
+require('dotenv').config();
 const bcrypt = require('bcrypt');
 const User = require('../models/User');
 const jwt = require('jsonwebtoken');
 const crypto = require('crypto');
 const mailer = require('../modules/mailer');
+const sgMail = require('@sendgrid/mail');
+const axios = require('axios');
 
 module.exports = {
     async reset(req, res){
@@ -31,6 +34,17 @@ module.exports = {
                         passwordResetExpires: now
                     }
                 });
+
+                const msg = {
+                    to: 'lucas.silva00@outlook.ie',
+                    from: 'michely_beki@hotmail.com',
+                    subject: 'Sending with Twilio SendGrid is Fun',
+                    text: 'and easy to do anywhere, even with Node.js',
+                    html: '<strong>and easy to do anywhere, even with Node.js</strong>'
+                };
+
+                sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+                sgMail.send(msg).then(console.log('Email Sent'));
 
                 /*//Sends Email using template stored in "Resources" to the email address received on request
                 mailer.sendMail({
