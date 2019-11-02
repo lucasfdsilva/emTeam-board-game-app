@@ -9,22 +9,42 @@ data: {
 	"email": "",
 	"password": ""
 }
+Response: {
+	"message": "",
+ 	 "user": {
+    	"firstName": "",
+    	"lastName": "",
+    	"email": "",
+    	"password": ""
+}
 
 Login User: /users/login
 data: {
-  "email": "",
+  	"email": "",
 	"password": ""
+}
+Response: {
+	"message": "",
+  	"accessToken": ""
 }
 
 Forgot Password: /users/forgot_password
 data: {
   "email": ""
 }
+Response: {
+	"message": "",
+  	"token": "",
+ 	"expiresAt": ""
+}
 
 Reset Password: /users/reset_password
 data: {
-  "email": "",
+  	"email": "",
 	"token": "",
 	"password": ""
+}
+Response: {
+	"message": "User password updated succesfully"
 }
 
