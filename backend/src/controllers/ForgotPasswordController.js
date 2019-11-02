@@ -25,11 +25,14 @@ module.exports = {
         now.setHours(now.getHours() + 1);
 
         //Updates the user found using the email address with the token and token expiration time
-        await User.findOneAndUpdate(userFromDB.id, {
+        await User.findByIdAndUpdate(userFromDB._id, {
           $set: {
             passwordResetToken: token,
             passwordResetExpires: now
           }
+        }).then(console.log('Updated user with Token and expiry date'))
+        .catch((err) => {
+          console.log(err)
         });
 
         //SendGrid configuration & Email send

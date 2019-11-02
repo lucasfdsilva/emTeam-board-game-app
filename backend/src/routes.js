@@ -7,6 +7,7 @@ const authMiddleware = require('./middlewares/auth');
 const RegisterController = require('./controllers/RegisterController');
 const LoginController = require('./controllers/LoginController');
 const ForgotPasswordController = require('./controllers/ForgotPasswordController');
+const ResetPasswordController = require('./controllers/ResetPasswordController');
 
 //Declaring Router Instances
 const openRoutes = express.Router();
@@ -16,8 +17,9 @@ protectedRoutes.use(authMiddleware)
 
 //Routes
 openRoutes.post('/users/register', RegisterController.create);
-openRoutes.post('/users/login', LoginController.login)
-openRoutes.post('/users/forgot_password', ForgotPasswordController.forgotPassword)
+openRoutes.post('/users/login', LoginController.login);
+openRoutes.post('/users/forgot_password', ForgotPasswordController.forgotPassword);
+openRoutes.post('/users/reset_password', ResetPasswordController.reset);
 
 
 module.exports = {
