@@ -1,50 +1,61 @@
-# emTeam---board-game-matcher-app
+<h1>Backend API Methods</h1>
 
-Backend API Methods
+<h2>Users</h2>
 
-Register User: /users/register
-data: {
+<h3>Register User</h3>
+
+<p><b>Route</b>: '/users/register'<p>
+<code>data: {
 	"firstName": "",
 	"lastName": "",
 	"email": "",
 	"password": ""
-}
-Response: {
+}</code><br>
+<code>Response: {
 	"message": "",
  	 "user": {
     	"firstName": "",
     	"lastName": "",
     	"email": "",
     	"password": ""
-}
+}</code>
 
-Login User: /users/login
-data: {
+<h3>Login User</h3> 
+<p><b>Route</b>: '/users/login'</p>
+<code>data: {
   	"email": "",
 	"password": ""
-}
-Response: {
+}</code><br>
+<code>Response: {
 	"message": "",
   	"accessToken": ""
-}
+}</code>
 
-Forgot Password: /users/forgot_password
-data: {
+<h3>Forgot Password</h3>
+<p><b>Route:</b> '/users/forgot_password'</p>
+<code>data: {
   "email": ""
-}
-Response: {
+}</code><br>
+<code>Response: {
 	"message": "",
   	"token": "",
  	"expiresAt": ""
-}
+}</code>
 
-Reset Password: /users/reset_password
-data: {
+<h3>Reset Password</h3>
+<p><b>Route:</b> '/users/reset_password'</p>
+<code>data: {
   	"email": "",
 	"token": "",
 	"password": ""
-}
-Response: {
-	"message": "User password updated succesfully"
-}
+}</code><br>
+<code>Response: {
+	"message": "User password updated successfully"
+}</code>
 
+
+<h2>Events</h2>
+
+<h3>Create Event</h3>
+
+<p><b>Route:</b> '/events/create'</p>
