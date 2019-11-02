@@ -13,9 +13,23 @@ export default class UserProfile extends Component<{}>{
 		return(
         <View style = {styles.container}>
             <Logo/>
-            <Text>Email</Text>
-            <Text>Phone number</Text>
-            <Text>Bio</Text>
+
+            <View>
+            <Text>Colors are temporary.</Text>
+            </View>
+
+            <View style = {styles.emailBox}>
+            <Text style = {styles.titleText}>Email</Text>
+            </View>
+
+            <View style = {styles.phoneBox}>
+            <Text style = {styles.titleText}>Phone number</Text>
+            </View>
+
+            <View style = {styles.bioBox}>
+            <Text style = {styles.titleText}>Bio</Text>
+            </View>
+
             <View style = {styles.signupTextContainer}>
             	<Text style = {styles.signupText}> To go back click </Text>
             	<TouchableOpacity onPress={this.login}>
@@ -34,7 +48,31 @@ const styles = StyleSheet.create({
 	container : {
 		flex: 1,
 		justifyContent: 'center',
-		alignItems: 'center'
+		alignItems: 'center',
+	},
+
+	emailBox : {
+		backgroundColor: '#f5e6e6',
+        flex: 0.25,
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignSelf: 'stretch',
+	},
+
+	phoneBox : {
+		backgroundColor: '#e0e0e0',
+        flex: 0.25,
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignSelf: 'stretch',
+	},
+
+	bioBox : {
+		backgroundColor: '#c9c7c7',
+        flex: 2,
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignSelf: 'stretch',
 	},
 
 	signupTextContainer : {
@@ -54,6 +92,11 @@ const styles = StyleSheet.create({
 		color: '#b80000',
 		fontSize: 17,
 		fontWeight: '500'
+	},
+
+	titleText : {
+		fontSize: 20,
+		fontWeight: '500',
 	}
 
 });
