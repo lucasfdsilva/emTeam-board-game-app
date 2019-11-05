@@ -2,10 +2,10 @@ import React, {Component} from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity} from 'react-native';
 import {Actions} from 'react-native-router-flux';
 
-export default class Form extends Component<{}>{
-	UserProfile(){
-		Actions.UserProfile()
-	}
+export default class SignupForm extends Component<{}>{
+        UserProfile(){
+        Actions.UserProfile()
+    }
     render(){
         return (
         <View>
@@ -20,6 +20,14 @@ export default class Form extends Component<{}>{
             <TextInput style={styles.inputBox} 
             underlineColorAndroid='rgba(0,0,0,0)' 
             placeholder="Password"
+            secureTextEntry={true}
+            placeholderTextColor = "#000000"
+            selectionColor="#fcd9d9"
+            ref={(input) => this.password = input}
+            />
+            <TextInput style={styles.inputBox} 
+            underlineColorAndroid='rgba(0,0,0,0)' 
+            placeholder="Re-Enter Password"
             secureTextEntry={true}
             placeholderTextColor = "#000000"
             selectionColor="#fcd9d9"

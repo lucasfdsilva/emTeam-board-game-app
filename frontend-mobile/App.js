@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { StyleSheet, View, StatusBar } from 'react-native';
 
 import Routes from './src/Routes';
+//import UserProfile from './src/pages/UserProfile';
 
 export default class App extends Component<{}> {
     render(){
@@ -11,6 +12,7 @@ export default class App extends Component<{}> {
                     backgroundColor="#ffffff"
                     barStyle="light-content"
                     />
+
                 <Routes/>
             </View>
         );
