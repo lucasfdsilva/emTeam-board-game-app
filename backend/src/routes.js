@@ -9,6 +9,7 @@ const LoginController = require('./controllers/LoginController');
 const ForgotPasswordController = require('./controllers/ForgotPasswordController');
 const ResetPasswordController = require('./controllers/ResetPasswordController');
 const UpdateUserController = require('./controllers/UpdateUserController');
+const DeleteUserController = require('./controllers/DeleteUserController');
 
 //Declaring Router Instances
 const openRoutes = express.Router();
@@ -22,6 +23,7 @@ openRoutes.post('/users/login', LoginController.login);
 openRoutes.post('/users/forgot_password', ForgotPasswordController.forgotPassword);
 openRoutes.post('/users/reset_password', ResetPasswordController.reset);
 openRoutes.put('/users/update', UpdateUserController.updateUser);
+openRoutes.delete('/users/delete', DeleteUserController.deleteUser);
 
 
 module.exports = {
