@@ -82,7 +82,7 @@
 }</code>
 
 <h3>Verify User</h3>
-<p><b>Route:</b> '/users/${token}'</p>
+<p><b>Route:</b> '/users/:verificationToken'</p>
 <p><b>Method</b>: GET</p>
 <code>
 Response: {
