@@ -59,8 +59,8 @@
 
 
 <h3>Update User Profile</h3>
-<p><b>Method</b>: PUT</p>
 <p><b>Route:</b> '/users/update'</p>
+<p><b>Method</b>: PUT</p>
 <code>data: {
 	"id": "",
   	"email": "",
@@ -72,8 +72,8 @@
 }</code>
 
 <h3>Delete User Profile</h3>
-<p><b>Method</b>: DELETE</p>
 <p><b>Route:</b> '/users/delete'</p>
+<p><b>Method</b>: DELETE</p>
 <code>data: {
 	"id": "",
 }</code><br>
