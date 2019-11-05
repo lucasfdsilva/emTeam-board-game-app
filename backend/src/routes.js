@@ -4,13 +4,13 @@ const express = require('express');
 const authMiddleware = require('./middlewares/auth');
 
 //Controllers
-const RegisterController = require('./controllers/RegisterController');
-const LoginController = require('./controllers/LoginController');
-const ForgotPasswordController = require('./controllers/ForgotPasswordController');
-const ResetPasswordController = require('./controllers/ResetPasswordController');
-const UpdateUserController = require('./controllers/UpdateUserController');
-const DeleteUserController = require('./controllers/DeleteUserController');
-const VerifyUserController = require('./controllers/VerifyUserController');
+const RegisterController = require('./controllers/users/RegisterController');
+const LoginController = require('./controllers/users/LoginController');
+const ForgotPasswordController = require('./controllers/users/ForgotPasswordController');
+const ResetPasswordController = require('./controllers/users/ResetPasswordController');
+const UpdateUserController = require('./controllers/users/UpdateUserController');
+const DeleteUserController = require('./controllers/users/DeleteUserController');
+const VerifyUserController = require('./controllers/users/VerifyUserController');
 
 //Declaring Router Instances
 const openRoutes = express.Router();
