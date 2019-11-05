@@ -27,7 +27,6 @@ openRoutes.put('/users/update', UpdateUserController.updateUser);
 openRoutes.delete('/users/delete', DeleteUserController.deleteUser);
 openRoutes.get('/users/verify/:verificationToken', VerifyUserController.verifyUser);
 
-
 module.exports = {
     openRoutes: openRoutes,
     protectedRoutes: protectedRoutes
