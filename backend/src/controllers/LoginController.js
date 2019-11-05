@@ -27,7 +27,7 @@ module.exports = {
 
             const accessToken = jwt.sign(user.id, process.env.ACCESS_TOKEN_SECRET);         
             
-            res.status(200).json({message: 'User Logged in succesfully', accessToken: accessToken });
+            res.status(200).json({message: 'User Logged in succesfully', id: userFromDB.id ,accessToken: accessToken });
 
         } else {
             res.status(400).json({message: 'Password is incorrect'});
