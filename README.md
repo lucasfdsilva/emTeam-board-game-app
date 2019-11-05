@@ -11,7 +11,7 @@
 	"lastName": "",
 	"email": "",
 	"password": ""
-}</code>
+}</code><br>
 <code>Response: {
 	"message": "",
  	 "user": {
