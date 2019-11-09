@@ -12,7 +12,6 @@ import {
 import {Actions} from 'react-native-router-flux';
 import api from '../services/api';
 import axios from 'axios';
-import Login from '../pages/Login';
 
 export default function SignupForm({}){
                  const [firstName, setFirstName] = useState('');
@@ -43,9 +42,7 @@ export default function SignupForm({}){
                 
                 //navigation.navigate('UserProfile');
             });
-                function Login(){
-                    Actions.Login()
-                }
+
         }
 
         return (

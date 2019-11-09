@@ -16,42 +16,28 @@ import axios from 'axios';
 export default function Form({}){
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
-/*	showAlert1 = () => {
-		Alert.alert(
-		  "Alert Title",
-		  "Alert Msg",
-		  [
-			{ text: "Later", onPress: () => console.log("later pressed") },
-			{
-			  text: "Cancel",
-			  onPress: () => console.log("Cancel Pressed"),
-			  style: "cancel"
-			},
-			{ text: "OK", onPress: () => console.log("OK Pressed") }
-		  ],
-		  { cancelable: false }
-		);
-	  };*/
+
 
 		async function handleLogin(){
-
                 const response = await axios({
-                method:   'post', 
+                method: 'post', 
                 url: 'http://3.248.36.112:5000/users/login',
                 data: {email: email, password: password }
-                
-                
-            });
+			});
+			
+			//console.log(response.data)
+		await AsyncStorage.setItem('accessToken', response.data.accessToken);
+		const tempToken = await AsyncStorage.getItem('accessToken');
+		await AsyncStorage.setItem('id', response.data.id);
+		const tempId = await AsyncStorage.getItem('id');
 
-        await AsyncStorage.setItem('user', _id);
-        await AsyncStorage.setItem('password', password)
+		//console.log('This is access token: ' + response.data.accessToken);
+		console.log(tempId);
 
         //navigation.navigate('UserProfile');
         }
 
-
-
-        return (
+		return (
         <KeyboardAvoidingView style={styles.container} behavior = "padding" enabled>
 	        <View>
 	            <TextInput style={styles.inputBox} 
@@ -59,7 +45,9 @@ export default function Form({}){
 	            placeholder="Email"
 	            placeholderTextColor = "#000000"
 	            selectionColor="#fcd9d9"
-	            keyboardType="email-address"
+				keyboardType="email-address"
+				value={email}
+                onChangeText={setEmail}
 	            onSubmitEditing={() => this.password.focus}
 	            />
 	            <TextInput style={styles.inputBox} 
@@ -67,7 +55,9 @@ export default function Form({}){
 	            placeholder="Password"
 	            secureTextEntry={true}
 	            placeholderTextColor = "#000000"
-	            selectionColor="#fcd9d9"
+				selectionColor="#fcd9d9"
+				value={password}
+                onChangeText={setPassword}
 	            ref={(input) => this.password = input}
 	            />
 	            <TouchableOpacity style = {styles.button} onPress={handleLogin}>
@@ -76,7 +66,7 @@ export default function Form({}){
 	        </View>
         </KeyboardAvoidingView>
         );
-
+	
 }
 
 const styles = StyleSheet.create({

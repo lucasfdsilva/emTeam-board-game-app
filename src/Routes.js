@@ -11,7 +11,7 @@ export default class Routes extends Component<{}>{
 		return(
 			  	<Router>
     				<Stack key="root" hideNavBar={true}>
-      					<Scene key="login" component={Login} title="Login" initial={true} />
+      					<Scene key="login" component={Login} title="Login" initial={true}  />
       					<Scene key="signup" component={Signup} title="Signup" />
       					<Scene key="UserProfile" component={UserProfile} title="Profile" />
     				</Stack>
