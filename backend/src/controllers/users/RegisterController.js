@@ -9,7 +9,7 @@ module.exports = {
   async create(req, res) {
     const { firstName, lastName, email, password } = req.body;
 
-    let userFromDB = await User.findOne({ email: email.toLowerCase() });
+    let userFromDB = await User.findOne({ email: email });
 
     if (!userFromDB) {
       try {
