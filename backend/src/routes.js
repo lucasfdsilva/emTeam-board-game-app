@@ -11,6 +11,7 @@ const ResetPasswordController = require('./controllers/users/ResetPasswordContro
 const UpdateUserController = require('./controllers/users/UpdateUserController');
 const DeleteUserController = require('./controllers/users/DeleteUserController');
 const VerifyUserController = require('./controllers/users/VerifyUserController');
+const ViewUserController = require('./controllers/users/ViewUserController');
 
 
 //Homepage Controllers
@@ -28,6 +29,7 @@ protectedRoutes.use(authMiddleware)
 openRoutes.get('/', HomePageController.homePage);
 
 //Users Routes
+openRoutes.get('/users', ViewUserController.viewUser);
 openRoutes.post('/users/register', RegisterController.create);
 openRoutes.post('/users/login', LoginController.login);
 openRoutes.post('/users/forgot_password', ForgotPasswordController.forgotPassword);
