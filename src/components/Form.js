@@ -32,7 +32,7 @@ export default function Form({}){
 		const tempId = await AsyncStorage.getItem('id');
 
 		//console.log('This is access token: ' + response.data.accessToken);
-		console.log(tempId);
+		//console.log(tempId);
 
         //navigation.navigate('UserProfile');
         }
