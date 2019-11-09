@@ -6,10 +6,13 @@ import {
             KeyboardAvoidingView,
             TextInput,
             TouchableOpacity,
-            AsyncStorage
+            AsyncStorage,
+            Alert
             } from 'react-native';
 import {Actions} from 'react-native-router-flux';
 import api from '../services/api';
+import axios from 'axios';
+import Login from '../pages/Login';
 
 export default function SignupForm({}){
                  const [firstName, setFirstName] = useState('');
@@ -17,19 +20,33 @@ export default function SignupForm({}){
                  const [email, setEmail] = useState('');
                  const [password, setPassword] = useState('');
 
+ /*                showAlert1 = () => {
+                    Alert.alert(
+                      "Alert Title",
+                      `${firstName, lastName, email, password}`,
+                      [
+                        { text: "Later", onPress: () => console.log(firstName, lastName, email, password) },
+                        
+                      ],
+                      { cancelable: false }
+                    );
+                  }; */   
+
+           async function handleRegister(){
 
 
-            async function handleRegister(){
-
-
-                const response = await api.post('/users/register',
-                {firstName},
-                {lastName},
-                {email},
-                {password}
-                )
-            }
-
+                const response = await axios({
+                method:   'post', 
+                url: 'http://3.248.36.112:5000/users/register',
+                data: { firstName: firstName, lastName: lastName, email: email, password: password }
+               
+                
+                //navigation.navigate('UserProfile');
+            });
+                function Login(){
+                    Actions.Login()
+                }
+        }
 
         return (
 
@@ -41,6 +58,8 @@ export default function SignupForm({}){
                 placeholderTextColor = "#000000"
                 selectionColor="#fcd9d9"
                 keyboardType="default"
+                value={firstName}
+                onChangeText={setFirstName}
                 onSubmitEditing={() => this.password.focus}
                 />
                 <TextInput style={styles.inputBox}
@@ -49,6 +68,8 @@ export default function SignupForm({}){
                 placeholderTextColor = "#000000"
                 selectionColor="#fcd9d9"
                 keyboardType="default"
+                value={lastName}
+                onChangeText={setLastName}
                 onSubmitEditing={() => this.password.focus}
                 />
                 <TextInput style={styles.inputBox}
@@ -57,6 +78,8 @@ export default function SignupForm({}){
                 placeholderTextColor = "#000000"
                 selectionColor="#fcd9d9"
                 keyboardType="email-address"
+                value={email}
+                onChangeText={setEmail}
                 onSubmitEditing={() => this.password.focus}
                 />
                 <TextInput style={styles.inputBox}
@@ -65,6 +88,8 @@ export default function SignupForm({}){
                 secureTextEntry={true}
                 placeholderTextColor = "#000000"
                 selectionColor="#fcd9d9"
+                value={password}
+                onChangeText={setPassword}
                 ref={(input) => this.password = input}
                 />
                 <TouchableOpacity style = {styles.button} onPress={handleRegister}>

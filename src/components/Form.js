@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, useState} from 'react';
 import {
             StyleSheet,
             Text,
@@ -6,22 +6,47 @@ import {
             KeyboardAvoidingView,
             TextInput,
             TouchableOpacity,
-            AsyncStorage
+            AsyncStorage,
+            Alert
             } from 'react-native';
 import {Actions} from 'react-native-router-flux';
 import api from '../services/api';
+import axios from 'axios';
 
-export default class Form extends Component<{}>{
-    render(){
+export default function Form({}){
+	const [email, setEmail] = useState('');
+	const [password, setPassword] = useState('');
+/*	showAlert1 = () => {
+		Alert.alert(
+		  "Alert Title",
+		  "Alert Msg",
+		  [
+			{ text: "Later", onPress: () => console.log("later pressed") },
+			{
+			  text: "Cancel",
+			  onPress: () => console.log("Cancel Pressed"),
+			  style: "cancel"
+			},
+			{ text: "OK", onPress: () => console.log("OK Pressed") }
+		  ],
+		  { cancelable: false }
+		);
+	  };*/
 
-        async function handleLogin(){
-            const response = await api.post('/users/login', {email}, {password})
-            const { _id} = response.data;
+		async function handleLogin(){
+
+                const response = await axios({
+                method:   'post', 
+                url: 'http://3.248.36.112:5000/users/login',
+                data: {email: email, password: password }
+                
+                
+            });
 
         await AsyncStorage.setItem('user', _id);
         await AsyncStorage.setItem('password', password)
 
-        navigation.navigate('UserProfile');
+        //navigation.navigate('UserProfile');
         }
 
 
@@ -46,14 +71,11 @@ export default class Form extends Component<{}>{
 	            ref={(input) => this.password = input}
 	            />
 	            <TouchableOpacity style = {styles.button} onPress={handleLogin}>
-	            	<Text style = {styles.buttonText}>{this.props.type}</Text>
+	            	<Text style = {styles.buttonText}>Sign In</Text>
 	            </TouchableOpacity>
 	        </View>
         </KeyboardAvoidingView>
         );
-
-    }
-
 
 }
 
