@@ -33,7 +33,7 @@ module.exports = {
           to: `${user.email}`,
           from: "no-reply@boardgeek.ie",
           subject: "Please verify your email address - Board Geek",
-          html: `<p>Please use the following token to verify your email address: http://localhost:5000/users/verify/${ user.verificationToken }</p>`
+          html: `<p>Please use the following token to verify your email address: http://3.248.36.112:5000/users/verify/${ user.verificationToken }</p>`
         };
 
         await sgMail.send(msg).then(() => {
