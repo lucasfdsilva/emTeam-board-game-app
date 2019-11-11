@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, StatusBar, TouchableOpacity } from 'react-nativ
 import {Actions} from 'react-native-router-flux';
 
 import Logo from '../components/Logo';
-import Form from '../components/Form';
+import SignupForm from '../components/SignupForm';
 
 export default class Signup extends Component<{}>{
 	login(){
@@ -13,7 +13,7 @@ export default class Signup extends Component<{}>{
         return (
         <View style = {styles.container}>
             <Logo/>
-            <Form type="Signup"/>
+            <SignupForm type="Signup"/>
             <View style = {styles.signupTextContainer}>
             	<Text style = {styles.signupText}> Already have an account? </Text>
             	<TouchableOpacity onPress={this.login}>
