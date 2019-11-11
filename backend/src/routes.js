@@ -13,10 +13,16 @@ const DeleteUserController = require('./controllers/users/DeleteUserController')
 const VerifyUserController = require('./controllers/users/VerifyUserController');
 const ViewUserController = require('./controllers/users/ViewUserController');
 
+//Event Controllers
+const CreateEventController = require('./controllers/CreateEventController');
+const UpdateEventController = require('./controllers/UpdateEventController');
+const GetAllEventsController = require('./controllers/GetAllEventsController');
+const GetEventController = require('./controllers/GetEventController');
+const DeleteEventController = require('./controllers/DeleteEventController');
+
 
 //Homepage Controllers
 const HomePageController = require('./controllers/homepage/HomePageController');
-
 
 //Declaring Router Instances
 const openRoutes = express.Router();
@@ -37,6 +43,13 @@ openRoutes.post('/users/reset_password', ResetPasswordController.reset);
 openRoutes.put('/users/update', UpdateUserController.updateUser);
 openRoutes.delete('/users/delete', DeleteUserController.deleteUser);
 openRoutes.get('/users/verify/:verificationToken', VerifyUserController.verifyUser);
+
+//Event Routes
+openRoutes.post('/events/create', CreateEventController.createEvent);
+openRoutes.put('/events/update', UpdateEventController.updateEvent);
+openRoutes.get('/events', GetAllEventsController.getEvents);
+openRoutes.get('/events/id', GetEventController.getEvent);
+openRoutes.delete('/events/delete', DeleteEventController.deleteEvent);
 
 
 module.exports = {
