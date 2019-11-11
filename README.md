@@ -92,6 +92,93 @@ Response: {
 
 <h2>Events</h2>
 
-<h3>Create Event</h3>
 
+<h3>Create Event</h3>
 <p><b>Route:</b> '/events/create'</p>
+<p><b>Method</b>: POST</p>
+<code>data: {
+	"id": "",
+	"eventName": "",
+	"game": "",
+	"location": "",
+	"numOfPlayers": "",
+	"eventDate": "",
+	"duration": ""
+</code><br>
+<code>Response: {
+	"message": "Event Created Successfully!"
+	}</code>
+	
+	
+<h3>Get All Events</h3>
+<p><b>Route:</b> '/events'</p>
+<p><b>Method</b>: GET</p>
+<code>Response: {
+	"_id": "",
+	"host": "",
+	"eventName": "",
+	"game": "",
+	"location": "",
+	"numOfPlayers": "",
+	"eventDate": "",
+	"duration" "",
+	"__v": ""
+	}</code>
+	
+	
+<h3>Get Event</h3>
+<p><b>Route:</b> '/events/id'</p>
+<p><b>Method</b>: GET</p>
+<code>data: {
+	"id": ""
+</code><br>
+<code>Response: {
+	"_id": "",
+	"host": "",
+	"eventName": "",
+	"game": "",
+	"location": "",
+	"numOfPlayers": "",
+	"eventDate": "",
+	"duration": "",
+	"__v": "",
+	"verified": "",
+	"_id": "",
+	"firstName": "",
+	"lastName": "",
+	"email": "",
+	"password": "",
+	"verificationToken": "",
+	"createdAt": "",
+	"__v": "",
+	"passwordRestExpires": "",
+	"passwordResetToken": ""
+	}</code>
+	
+	
+<h3>Update Event</h3>
+<p><b>Route:</b> '/events/update'</p>
+<p><b>Method</b>: PUT</p>
+<code>data: {
+	"id": "",
+	"eventName": "",
+	"game": "",
+	"location": "",
+	"numOfPlayers": "",
+	"eventDate": "",
+	"duration": ""
+</code><br>
+<code>Response: {
+	"message": "Event Updated Successfully!"
+	}</code>
+	
+	
+<h3>Delete Event</h3>
+<p><b>Route:</b> '/events/delete'</p>
+<p><b>Method</b>: DELETE</p>
+<code>data: {
+	"id": "",
+</code><br>
+<code>Response: {
+	"message": "Event Deleted Successfully!"
+	}</code>
