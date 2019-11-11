@@ -4,25 +4,25 @@ const express = require('express');
 const authMiddleware = require('./middlewares/auth');
 
 //Users Controllers
-const RegisterController = require('./controllers/users/RegisterController');
-const LoginController = require('./controllers/users/LoginController');
-const ForgotPasswordController = require('./controllers/users/ForgotPasswordController');
-const ResetPasswordController = require('./controllers/users/ResetPasswordController');
-const UpdateUserController = require('./controllers/users/UpdateUserController');
-const DeleteUserController = require('./controllers/users/DeleteUserController');
-const VerifyUserController = require('./controllers/users/VerifyUserController');
-const ViewUserController = require('./controllers/users/ViewUserController');
+const RegisterController = require('./controllers/usersControllers/RegisterController');
+const LoginController = require('./controllers/usersControllers/LoginController');
+const ForgotPasswordController = require('./controllers/usersControllers/ForgotPasswordController');
+const ResetPasswordController = require('./controllers/usersControllers/ResetPasswordController');
+const UpdateUserController = require('./controllers/usersControllers/UpdateUserController');
+const DeleteUserController = require('./controllers/usersControllers/DeleteUserController');
+const VerifyUserController = require('./controllers/usersControllers/VerifyUserController');
+const ViewUserController = require('./controllers/usersControllers/ViewUserController');
 
 //Event Controllers
-const CreateEventController = require('./controllers/gameEvents/CreateEventController');
-const UpdateEventController = require('./controllers/gameEvents/UpdateEventController');
-const GetAllEventsController = require('./controllers/gameEvents/GetAllEventsController');
-const GetEventController = require('./controllers/gameEvents/GetEventController');
-const DeleteEventController = require('./controllers/gameEvents/DeleteEventController');
+const CreateEventController = require('./controllers/eventsControllers/CreateEventController');
+const UpdateEventController = require('./controllers/eventsControllers/UpdateEventController');
+const GetAllEventsController = require('./controllers/eventsControllers/GetAllEventsController');
+const GetEventController = require('./controllers/eventsControllers/GetEventController');
+const DeleteEventController = require('./controllers/eventsControllers/DeleteEventController');
 
 
 //Homepage Controllers
-const HomePageController = require('./controllers/homepage/HomePageController');
+const HomePageController = require('./controllers/homepageControllers/HomePageController');
 
 //Declaring Router Instances
 const openRoutes = express.Router();
