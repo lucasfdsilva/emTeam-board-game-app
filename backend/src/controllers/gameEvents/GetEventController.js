@@ -1,6 +1,6 @@
 require('dotenv').config();
-const Event = require('../models/Event');
-const User = require('../models/User');
+const Event = require('../../models/Event');
+const User = require('../../models/User');
 
 module.exports = {
     async getEvent(req, res){

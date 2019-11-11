@@ -14,11 +14,11 @@ const VerifyUserController = require('./controllers/users/VerifyUserController')
 const ViewUserController = require('./controllers/users/ViewUserController');
 
 //Event Controllers
-const CreateEventController = require('./controllers/CreateEventController');
-const UpdateEventController = require('./controllers/UpdateEventController');
-const GetAllEventsController = require('./controllers/GetAllEventsController');
-const GetEventController = require('./controllers/GetEventController');
-const DeleteEventController = require('./controllers/DeleteEventController');
+const CreateEventController = require('./controllers/gameEvents/CreateEventController');
+const UpdateEventController = require('./controllers/gameEvents/UpdateEventController');
+const GetAllEventsController = require('./controllers/gameEvents/GetAllEventsController');
+const GetEventController = require('./controllers/gameEvents/GetEventController');
+const DeleteEventController = require('./controllers/gameEvents/DeleteEventController');
 
 
 //Homepage Controllers
