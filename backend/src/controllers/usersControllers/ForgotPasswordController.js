@@ -38,7 +38,7 @@ module.exports = {
         //SendGrid configuration & Email send
         const msg = {
             to: `${ email }`,
-            from: 'no-reply@emteam.ie',
+            from: 'no-reply@boardgeek.ie',
             subject: 'Password Reset - EmTeam',
             html: `<p>Did you forget your password? Use this token to reset it: ${ token }</p>`
           };
