@@ -3,8 +3,9 @@ import { StyleSheet, Text, View, StatusBar, TouchableOpacity } from 'react-nativ
 import {Actions} from 'react-native-router-flux';
 
 import Logo from '../componets/Logo';
+import PWResetForm from '../componets/PWResetForm';
 
-export default class Login extends Component<{}>{
+export default class ResorePassword extends Component<{}>{
 	signup(){
 		Actions.signup()
 	}
@@ -12,7 +13,7 @@ export default class Login extends Component<{}>{
         return (
         <View style = {styles.container}>
             <Logo/>
-            <Form type="Login"/>
+            <PWResetForm type="RestorePassword"/>
             <View style = {styles.signupTextContainer}>
             	<Text style = {styles.signupText}> No account? Hurry up and </Text>
             	<TouchableOpacity onPress={this.signup}>

@@ -12,6 +12,9 @@ export default class Login extends Component<{}>{
 	UserProfile(){
 		Actions.UserProfile()
 	}
+	ForgotPW(){
+		Actions.ForgotPW()
+	}
     render(){
         return (
         <View style = {styles.container}>
@@ -27,6 +30,12 @@ export default class Login extends Component<{}>{
 				<Text style = {styles.signupText}> Navigate to </Text>
             	<TouchableOpacity onPress={this.UserProfile}>
             	 <Text style = {styles.signupButton}> profile</Text>
+            	 </TouchableOpacity>
+			</View>
+			<View>
+				<Text style = {styles.signupText}> Check Password reset page</Text>
+            	<TouchableOpacity onPress={this.ForgotPW}>
+            	 <Text style = {styles.signupButton}> here </Text>
             	 </TouchableOpacity>
 			</View>
         </View>
