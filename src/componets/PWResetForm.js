@@ -26,12 +26,12 @@ export default function PWResetForm({}){
 			});
 			
 		console.log(response.data)
-		// await AsyncStorage.setItem('accessToken', response.data.accessToken);
-		// const tempToken = await AsyncStorage.getItem('accessToken');
-		// await AsyncStorage.setItem('message', response.data.message);
-        // const tempMessage = await AsyncStorage.getItem('message');
-        // await AsyncStorage.setItem('expiresAt', response.data.exiresAt);
-        // const tempExpiry = await AsyncStorage.getItem ('expiresAt');    
+		await AsyncStorage.setItem('accessToken', response.data.accessToken);
+		const tempToken = await AsyncStorage.getItem('accessToken');
+		await AsyncStorage.setItem('message', response.data.message);
+        const tempMessage = await AsyncStorage.getItem('message');
+        await AsyncStorage.setItem('expiresAt', response.data.exiresAt);
+        const tempExpiry = await AsyncStorage.getItem ('expiresAt');    
 
 		//console.log('HELLO')
 
@@ -49,7 +49,6 @@ export default function PWResetForm({}){
 				keyboardType="email-address"
 				value={email}
                 onChangeText={setEmail}
-	            onSubmitEditing={() => this.password.focus}
 	            />
 
 	            <TouchableOpacity style = {styles.button} onPress={handleReset}>
