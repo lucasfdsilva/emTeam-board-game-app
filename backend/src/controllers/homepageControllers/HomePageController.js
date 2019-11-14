@@ -4,7 +4,7 @@ module.exports = {
 
     homePage(req, res){
 
-        res.send('Welcome to Board Geek API');
+        res.send('This is a test for the containerization & Deployment');
     
     }
 
