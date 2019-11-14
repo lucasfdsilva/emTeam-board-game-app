@@ -8,6 +8,7 @@ import UserProfile from './screens/UserProfile';
 import HomeScreen from './screens/HomeScreen';
 import GameScreen from './screens/GameScreen';
 import RestorePassword from './screens/RestorePassword';
+import ChangePassword from './screens/ChangePassword';
 
 export default class Routes extends Component<{}>{
 	render(){
@@ -19,7 +20,8 @@ export default class Routes extends Component<{}>{
       					<Scene key="UserProfile" component={UserProfile} title="Profile" />
 						<Scene key="Home" component={HomeScreen} title="HomeScreen" />
 						<Scene key="Game" component={GameScreen} title="GameScreen" />
-						<Scene key="ForgotPW" component={RestorePassword} title="Password restore page"/>	
+						<Scene key="ForgotPW" component={RestorePassword} title="Password restore page"/>
+						<Scene key="ChangePW" component={ChangePassword} title="Password change page"/>	
     				</Stack>
   				</Router>	
 			)

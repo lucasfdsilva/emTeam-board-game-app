@@ -13,41 +13,34 @@ import {Actions} from 'react-native-router-flux';
 import api from '../services/api';
 import axios from 'axios';
 
-export default function PWResetForm({}){
-	const [email, setEmail] = useState('');
+export default function PWChangeForm({}){
+    const [email, setEmail] = useState('');
+    const [token, setToken] = useState('');
+    const [password, setPassword] = useState('');
 
 
 
-		async function handleReset(){
+		async function handleChange(){
                 const response = await axios({
                 method: 'post', 
-                url: 'http://apiboardgeek.co.uk/users/forgot_password',
-                data: {email: email}
+                url: 'http://apiboardgeek.co.uk/users/reset_password',
+                data: {email: email, token: token, password: password}
 			});
-            
-            Actions.ChangePW();
-            
-		console.log(response.data)
-		await AsyncStorage.setItem('accessToken', response.data.accessToken);
-		const tempToken = await AsyncStorage.getItem('accessToken');
+			
+        console.log(response.data)
+        //console.log('HELLO!!!')
+
 		await AsyncStorage.setItem('message', response.data.message);
         const tempMessage = await AsyncStorage.getItem('message');
-        await AsyncStorage.setItem('expiresAt', response.data.exiresAt);
-        const tempExpiry = await AsyncStorage.getItem ('expiresAt');    
 
-        
-            
-        
-		//console.log('HELLO')
 
-        //navigation.navigate('ChangePassword')
-
+        //navigation.navigate('UserProfile');
         }
 
 		return (
         <KeyboardAvoidingView style={styles.container} behavior = "padding" enabled>
 	        <View>
-	            <TextInput style={styles.inputBox} 
+            <TextInput style={styles.inputBox} 
 	            underlineColorAndroid='rgba(0,0,0,0)' 
 	            placeholder="Email"
 	            placeholderTextColor = "#000000"
@@ -57,8 +50,29 @@ export default function PWResetForm({}){
                 onChangeText={setEmail}
 	            />
 
-	            <TouchableOpacity style = {styles.button} onPress={handleReset}>
-	            	<Text style = {styles.buttonText}>Send reset request</Text>
+            <TextInput style={styles.inputBox} 
+	            underlineColorAndroid='rgba(0,0,0,0)' 
+	            placeholder="Token"
+	            placeholderTextColor = "#000000"
+	            selectionColor="#fcd9d9"
+				keyboardType="default"
+				value={token}
+                onChangeText={setToken}
+	            />
+
+            <TextInput style={styles.inputBox}
+                underlineColorAndroid='rgba(0,0,0,0)'
+                placeholder="Password"
+                secureTextEntry={true}
+                placeholderTextColor = "#000000"
+                selectionColor="#fcd9d9"
+                value={password}
+                onChangeText={setPassword}
+                ref={(input) => this.password = input}
+                />  
+
+	            <TouchableOpacity style = {styles.button} onPress={handleChange}>
+	            	<Text style = {styles.buttonText}>Complete password change</Text>
 	            </TouchableOpacity>
 	        </View>
         </KeyboardAvoidingView>
