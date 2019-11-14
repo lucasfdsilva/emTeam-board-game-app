@@ -21,11 +21,11 @@ export default function PWResetForm({}){
 		async function handleReset(){
                 const response = await axios({
                 method: 'post', 
-                url: 'http://3.248.36.112:5000/users/forgot_password',
+                url: 'http://apiboardgeek.co.uk/users/forgot_password',
                 data: {email: email}
 			});
 			
-		console.log(response.data)
+		//console.log(response.data)
 		await AsyncStorage.setItem('accessToken', response.data.accessToken);
 		const tempToken = await AsyncStorage.getItem('accessToken');
 		await AsyncStorage.setItem('message', response.data.message);
