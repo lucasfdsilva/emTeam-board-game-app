@@ -21,17 +21,17 @@ export default function Form({}){
 		async function handleLogin(){
                 const response = await axios({
                 method: 'post', 
-                url: 'http://3.248.36.112:5000/users/login',
+                url: 'http://apiboardgeek.co.uk/users/login',
                 data: {email: email, password: password }
 			});
-			
-		onsole.log(response.data)
+		//console.log('HELLO')
+		console.log(response.data)
 		await AsyncStorage.setItem('accessToken', response.data.accessToken);
 		const tempToken = await AsyncStorage.getItem('accessToken');
 		await AsyncStorage.setItem('id', response.data.id);
 		const tempId = await AsyncStorage.getItem('id');
 
-		//console.log('HELLO')
+		
 
         //navigation.navigate('UserProfile');
         }

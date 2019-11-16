@@ -12,12 +12,16 @@ import {
 import {Actions} from 'react-native-router-flux';
 import api from '../services/api';
 import axios from 'axios';
+import ValidationComponent from 'react-native-form-validator';
 
 export default function SignupForm({}){
+
+                
                  const [firstName, setFirstName] = useState('');
                  const [lastName, setLastName] = useState('');
                  const [email, setEmail] = useState('');
                  const [password, setPassword] = useState('');
+
 
  /*                showAlert1 = () => {
                     Alert.alert(
@@ -32,22 +36,31 @@ export default function SignupForm({}){
                   }; */   
 
            async function handleRegister(){
+                // this.validate({
+                //   firstName:{minlength: 3, required: true},
+                //   lastName: {minlength: 3, required: true},
+                //   email: {email: true, required: true},
+                //   password: {required: true}
+                // });
 
                 const response = await axios({
                 method:   'post', 
-                url: 'http://3.248.36.112:5000/users/register',
+                url: 'http://apiboardgeek.co.uk/users/register',
                 data: { firstName: firstName, lastName: lastName, email: email, password: password }
-              
-                //navigation.navigate('UserProfile');
-            });
-
-            onsole.log(response.data)
-            await AsyncStorage.setItem('message', response.data.message);
-            const tempToken = await AsyncStorage.getItem('message');
-            await AsyncStorage.setItem('user', response.data.user);
-            const tempId = await AsyncStorage.getItem('user');
+            }); //end of const response = await axios
+            //console.log('HELLO2')
+            //console.log(response.data)
             
-            Actions.Login();
+
+            //validation: fields not blank, 
+
+            Alert.alert(
+              'Board Geek:',
+               response.data.message + ', verification link was sent to: ' + response.data.user.email,
+              [
+                {text: 'Go to login', onPress: () => Actions.login()},
+              ],
+            );
         }
 
         return (
