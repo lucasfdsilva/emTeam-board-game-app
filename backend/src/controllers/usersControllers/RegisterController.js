@@ -9,10 +9,15 @@ module.exports = {
   async create(req, res) {
     const { firstName, lastName, email, password } = req.body;
 
-    let userFromDB = await User.findOne({ email: email });
+    try {
 
-    if (!userFromDB) {
-      try {
+      if (!firstName || !lastName || !email || !password) {
+        res.status(400).json({ message: "ERROR: Missing Required Information from Request" });
+      }
+
+      let userFromDB = await User.findOne({ email: email });
+
+      if (!userFromDB) {
         const salt = await bcrypt.genSalt();
         const hashedPassword = await bcrypt.hash(password, salt);
 
@@ -33,23 +38,24 @@ module.exports = {
           to: `${user.email}`,
           from: "no-reply@boardgeek.ie",
           subject: "Please verify your email address - Board Geek",
-          html: `<p>Please use the following token to verify your email address: http://apiboardgeek.co.uk/users/verify/${ user.verificationToken }</p>`
+          html: `<p>Please use the following token to verify your email address: http://apiboardgeek.co.uk/users/verify/${user.verificationToken}</p>`
         };
 
         await sgMail.send(msg).then(() => {
-            console.log("SendGrid Service Email Sent");
-          })
-          .catch(err => { 
+          console.log("SendGrid Service Email Sent");
+        })
+          .catch(err => {
             console.log(err);
           });
 
-          res.status(200).json({ message: 'User Created Succesfully', verificationEmail: 'Verification Email Sent Successfully', user: user });
+        res.status(200).json({ message: 'User Created Succesfully', verificationEmail: 'Verification Email Sent Successfully', user: user });
 
-      } catch {
-        res.status(500).res.send();
+      } else {
+        res.status(403).json({ message: "ERROR: User Already Registered", user: userFromDB });
       }
-    } else {
-      res.status(403).json({ message: "ERROR: User Already Registered", user: userFromDB });
+
+    } catch {
+      res.status(500).send();
     }
   }
-};
+}

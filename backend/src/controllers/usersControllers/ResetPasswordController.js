@@ -3,23 +3,27 @@ const bcrypt = require('bcryptjs');
 
 module.exports = {
 
-    async reset(req, res){
+    async reset(req, res) {
         const { email, token, password } = req.body;
 
-        let userFromDB = await User.findOne({ email: email.toLowerCase() });
-
         try {
-            
-            if(!userFromDB){
+
+            if (!email || !token || !password) {
+                res.status(400).json({ message: "ERROR: Missing Required Information from Request" });
+            }
+
+            let userFromDB = await User.findOne({ email: email.toLowerCase() });
+
+            if (!userFromDB) {
                 return res.status(400).send({ message: 'User Not Found' });
             }
 
-            if(token !== userFromDB.passwordResetToken){
+            if (token !== userFromDB.passwordResetToken) {
                 return res.status(400).send({ message: 'Invalid Token' });
             }
 
             const now = new Date();
-            if(now > userFromDB.passwordResetExpires){
+            if (now > userFromDB.passwordResetExpires) {
                 return res.status(400).send({ message: 'Expired Token. Please generate a new token' });
             }
 
@@ -39,8 +43,8 @@ module.exports = {
                 });
 
         } catch {
-            res.status(400).send({ message: 'Cannot reset password, try again'});
+            res.status(400).send({ message: 'Cannot reset password, try again' });
         }
-        
+
     }
 };

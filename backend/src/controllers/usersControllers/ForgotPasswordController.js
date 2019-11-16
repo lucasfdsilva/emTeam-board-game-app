@@ -12,6 +12,11 @@ module.exports = {
     const { email } = req.body;
 
     try {
+
+      if (!email) {
+        res.status(400).json({ message: "ERROR: Missing Required Information from Request" });
+      }
+
       let userFromDB = await User.findOne({ email: email.toLowerCase() });
 
       //Checks if user exists in the Database

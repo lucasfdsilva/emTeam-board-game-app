@@ -7,6 +7,12 @@ module.exports = {
   async login(req, res) {
     const { email, password } = req.body;
 
+    try {
+
+    if (!email || !password) {
+      res.status(400).json({ message: "ERROR: Missing Required Information from Request" });
+    }
+
     let userFromDB = await User.findOne({ email: email.toLowerCase() });
 
     if (!userFromDB) {
@@ -17,7 +23,6 @@ module.exports = {
       return res.status(400).json({ message: "Please verify your email before logging in" });
     }
 
-    try {
       let user = {
         id: userFromDB.id,
         firstName: userFromDB.firstName,
