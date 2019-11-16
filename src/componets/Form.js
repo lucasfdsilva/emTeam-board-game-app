@@ -31,7 +31,9 @@ export default function Form({}){
 		await AsyncStorage.setItem('id', response.data.id);
 		const tempId = await AsyncStorage.getItem('id');
 
-		
+		if(response.data.message=="User Logged in succesfully"){
+			Actions.UserProfile();
+		}
 
         //navigation.navigate('UserProfile');
         }

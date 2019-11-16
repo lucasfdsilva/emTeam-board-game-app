@@ -36,12 +36,19 @@ export default function SignupForm({}){
                   }; */   
 
            async function handleRegister(){
-                // this.validate({
-                //   firstName:{minlength: 3, required: true},
-                //   lastName: {minlength: 3, required: true},
-                //   email: {email: true, required: true},
-                //   password: {required: true}
-                // });
+                if(firstName==""){
+                  alert('Please fill in the "First Name" field');
+                }
+                else if(lastName==""){
+                  alert('Please fill in the "Last Name" field');
+                }
+                else if(email==""){
+                  alert('Please fill in the "Email" field');
+                }
+                else if(password==""){
+                  alert('Please fill in the "Password" field');
+                }
+
 
                 const response = await axios({
                 method:   'post', 
@@ -49,7 +56,7 @@ export default function SignupForm({}){
                 data: { firstName: firstName, lastName: lastName, email: email, password: password }
             }); //end of const response = await axios
             //console.log('HELLO2')
-            //console.log(response.data)
+            console.log(response.data)
             
 
             //validation: fields not blank, 
