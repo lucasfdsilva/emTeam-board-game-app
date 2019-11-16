@@ -34,21 +34,24 @@ export default function SignupForm({}){
                       { cancelable: false }
                     );
                   }; */   
-
            async function handleRegister(){
-                if(firstName==""){
-                  alert('Please fill in the "First Name" field');
-                }
-                else if(lastName==""){
-                  alert('Please fill in the "Last Name" field');
-                }
-                else if(email==""){
-                  alert('Please fill in the "Email" field');
-                }
-                else if(password==""){
-                  alert('Please fill in the "Password" field');
-                }
 
+            if(firstName==""){
+              alert('Please fill in the "First Name" field');
+              return null;
+            }
+            else if(lastName==""){
+              alert('Please fill in the "Last Name" field');
+              return null;
+            }
+            else if(email==""){
+              alert('Please fill in the "Email" field');
+              return null;
+            }
+            else if(password==""){
+              alert('Please fill in the "Password" field');
+              return null;
+            }
 
                 const response = await axios({
                 method:   'post', 
@@ -69,6 +72,7 @@ export default function SignupForm({}){
               ],
             );
         }
+
 
         return (
 
