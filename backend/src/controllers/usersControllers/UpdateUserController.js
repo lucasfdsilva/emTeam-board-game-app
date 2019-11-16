@@ -8,14 +8,14 @@ module.exports = {
 
       if (!id || !firstName || !lastName || !email) {
         res.status(400).json({ message: "ERROR: Missing Required Information from Request" });
-    }
+      }
 
-    let userFromDB = await User.findOne({ _id: id });
+      let userFromDB = await User.findOne({ _id: id });
 
-    if (!userFromDB) {
-      return res.status(400).json({ message: "User Not Found" });
-    } else {
-      
+      if (!userFromDB) {
+        return res.status(400).json({ message: "User Not Found" });
+      } else {
+
         if (userFromDB.firstName !== firstName) {
           userFromDB.firstName = firstName;
         }
@@ -30,10 +30,10 @@ module.exports = {
 
         await userFromDB.save();
 
-        res.status(200).json({ message: 'User profile Updated Succesfully'});
-        
-      } 
-    }catch {
+        res.status(200).json({ message: 'User profile Updated Succesfully' });
+
+      }
+    } catch {
       res.status(500).send();
     }
   }
