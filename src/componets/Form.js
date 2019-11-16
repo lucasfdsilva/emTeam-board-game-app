@@ -25,13 +25,13 @@ export default function Form({}){
                 data: {email: email, password: password }
 			});
 			
-			//console.log(response.data)
+		onsole.log(response.data)
 		await AsyncStorage.setItem('accessToken', response.data.accessToken);
 		const tempToken = await AsyncStorage.getItem('accessToken');
 		await AsyncStorage.setItem('id', response.data.id);
 		const tempId = await AsyncStorage.getItem('id');
 
-		console.log('HELLO')
+		//console.log('HELLO')
 
         //navigation.navigate('UserProfile');
         }

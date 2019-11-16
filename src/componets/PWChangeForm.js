@@ -33,6 +33,7 @@ export default function PWChangeForm({}){
 		await AsyncStorage.setItem('message', response.data.message);
         const tempMessage = await AsyncStorage.getItem('message');
 
+		Actions.Login();
 
         //navigation.navigate('UserProfile');
         }

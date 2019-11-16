@@ -33,16 +33,21 @@ export default function SignupForm({}){
 
            async function handleRegister(){
 
-
                 const response = await axios({
                 method:   'post', 
                 url: 'http://3.248.36.112:5000/users/register',
                 data: { firstName: firstName, lastName: lastName, email: email, password: password }
-               
-                
+              
                 //navigation.navigate('UserProfile');
             });
 
+            onsole.log(response.data)
+            await AsyncStorage.setItem('message', response.data.message);
+            const tempToken = await AsyncStorage.getItem('message');
+            await AsyncStorage.setItem('user', response.data.user);
+            const tempId = await AsyncStorage.getItem('user');
+            
+            Actions.Login();
         }
 
         return (
