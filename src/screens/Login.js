@@ -26,16 +26,16 @@ export default class Login extends Component<{}>{
             	 <Text style = {styles.signupButton}> Sign Up</Text>
             	 </TouchableOpacity>
             </View>
-			<View>
+			 {/* <View>
 				<Text style = {styles.signupText}> Navigate to </Text>
             	<TouchableOpacity onPress={this.UserProfile}>
             	 <Text style = {styles.signupButton}> profile</Text>
             	 </TouchableOpacity>
-			</View>
-			<View>
-				<Text style = {styles.signupText}> Check Password reset page</Text>
+			</View>  */}
+			<View style = {styles.signupTextContainer}>
+				<Text style = {styles.signupText}> Forgot password? Reset it</Text>
             	<TouchableOpacity onPress={this.ForgotPW}>
-            	 <Text style = {styles.signupButton}> here </Text>
+            	 <Text style = {styles.signupButton}> here</Text>
             	 </TouchableOpacity>
 			</View>
         </View>

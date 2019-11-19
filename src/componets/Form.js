@@ -32,8 +32,14 @@ export default function Form({}){
 		const tempId = await AsyncStorage.getItem('id');
 
 		if(response.data.message=="User Logged in succesfully"){
+			//alert('Login succesful');
+			//this.props.navigation.navigate('UserProfile', {tempId})
 			Actions.UserProfile();
 		}
+		// else{
+		// alert('Login failed, please try again');
+		// return null;
+		//  }
 
         //navigation.navigate('UserProfile');
         }

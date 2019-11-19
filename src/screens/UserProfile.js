@@ -12,7 +12,11 @@ export default class UserProfile extends Component<{}>{
 	Home(){
 		Actions.Home()
 	}
+	
+
 	render(){
+		//const{navigate} = this.props.navigation;
+
 		return(
         <View style = {styles.container}>
             <Logo/>
