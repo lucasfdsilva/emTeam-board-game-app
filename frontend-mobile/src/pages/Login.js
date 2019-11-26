@@ -3,7 +3,11 @@ import { StyleSheet, Text, View, StatusBar, TouchableOpacity } from 'react-nativ
 import {Actions} from 'react-native-router-flux';
 
 import Logo from '../components/Logo';
+<<<<<<< Updated upstream:frontend-mobile/src/pages/Login.js
 import Form from '../components/Form';
+=======
+import PWResetForm from '../components/PWResetForm';
+>>>>>>> Stashed changes:src/screens/RestorePassword.js
 
 export default class Login extends Component<{}>{
 	signup(){
