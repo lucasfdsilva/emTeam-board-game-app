@@ -35,7 +35,7 @@ protectedRoutes.use(authMiddleware)
 openRoutes.get('/', HomePageController.homePage);
 
 //Users Routes
-openRoutes.get('/users', ViewUserController.viewUser);
+openRoutes.get('/users/:id', ViewUserController.viewUser);
 openRoutes.post('/users/register', RegisterController.create);
 openRoutes.post('/users/login', LoginController.login);
 openRoutes.post('/users/forgot_password', ForgotPasswordController.forgotPassword);

@@ -3,7 +3,7 @@ const User = require('../../models/User');
 module.exports = {
 
   async viewUser(req, res) {
-    const { id } = req.body;
+    const { id } = req.params;
 
     try {
 
