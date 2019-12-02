@@ -41,21 +41,27 @@ const UserSchema = new mongoose.Schema({
   }],
   fiveStarsReviews: {
     type: Number,
+    default: 0,
   },
   fourStarsReviews: {
     type: Number,
+    default: 0,
   },
   threeStarsReviews: {
     type: Number,
+    default: 0,
   },
   twoStarsReviews: {
     type: Number,
+    default: 0,
   },
   oneStarReviews: {
     type: Number,
+    default: 0,
   },
   averageStar: {
     type: Number,
+    default: 0,
   },
   
 });

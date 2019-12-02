@@ -5,12 +5,12 @@ module.exports = {
 
   async rateUser(req, res){
 
-    const { userId, ratedUserId, score } = req.body;
+    const { userId, ratedUserId, stars } = req.body;
 
     try{
 
       //Check for missing data on request
-      if(!userId || !ratedUserId ||!score ){
+      if(!userId || !ratedUserId ||!stars ){
         res.status(400).json({ message: "Error - Missing Required Information from Request"});
       }
 
@@ -28,16 +28,27 @@ module.exports = {
         res.status(400).json({ message: "Error - Can't find the to rate" });
       }
 
-      ratedUserFromDB.totalScore = ratedUserFromDB.totalScore + parseInt(score);
-      ratedUserFromDB.numOfReviews = ratedUserFromDB.numOfReviews + 1;
+      if(stars == 1){ ratedUserFromDB.oneStarReviews++ };
+      if(stars == 2){ ratedUserFromDB.twoStarsReviews++ };
+      if(stars == 3){ ratedUserFromDB.threeStarsReviews++ };
+      if(stars == 4){ ratedUserFromDB.fourStarsReviews++ };
+      if(stars == 5){ ratedUserFromDB.fiveStarsReviews++ };
 
-      let averageScoreCalculated = ratedUserFromDB.totalScore / ratedUserFromDB.numOfReviews;
+      totalReviews = 
+        ratedUserFromDB.oneStarReviews +
+        ratedUserFromDB.twoStarsReviews +
+        ratedUserFromDB.threeStarsReviews +
+        ratedUserFromDB.fourStarsReviews +
+        ratedUserFromDB.fiveStarsReviews
 
-      ratedUserFromDB.averageScore = Math.floor(averageScoreCalculated)
+      totalReviewsWeighted = 
+        ratedUserFromDB.oneStarReviews*1 +
+        ratedUserFromDB.twoStarsReviews*2 +
+        ratedUserFromDB.threeStarsReviews*3 +
+        ratedUserFromDB.fourStarsReviews*4 +
+        ratedUserFromDB.fiveStarsReviews*5
 
-      console.log(ratedUserFromDB.totalScore);
-      console.log(ratedUserFromDB.averageScore);
-      console.log(ratedUserFromDB.numOfReviews);
+      ratedUserFromDB.averageStar = totalReviewsWeighted / totalReviews;
 
       await ratedUserFromDB.save();
 
