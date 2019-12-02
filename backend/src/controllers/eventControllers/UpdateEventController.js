@@ -4,13 +4,18 @@ const User = require('../../models/User');
 
 module.exports = {
     async updateEvent(req, res){ 
-        const { id, eventName, game, location, numOfPlayers, eventDate, duration } = req.body;   
-        let eventFromDB = await Event.findOne({ _id: id });        
+        const { eventId, eventName, gameId, location, numOfPlayers, eventDate, duration } = req.body;
+        
+        if (!eventId || !eventName || !gameId || !location || !numOfPlayers || !eventDate || !duration) {
+            res.status(400).json({ message: "ERROR: Missing Required Information from Request" });
+        }
+
+        let eventFromDB = await Event.findOne({ _id: eventId });        
         if(!eventFromDB) return res.status(404).send({Message: 'Unable to locate an event with that ID.'});
         else{                 
             try{
                 if(eventFromDB.eventName !== eventName) eventFromDB.eventName = eventName;
-                if(eventFromDB.game !== game) eventFromDB.game = game;
+                if(eventFromDB.gameId !== gameId) eventFromDB.gameId = gameId;
                 if(eventFromDB.location !== location) eventFromDB.location = location;
                 if(eventFromDB.numOfPlayers !== numOfPlayers) eventFromDB.numOfPlayers = numOfPlayers;
                 if(eventFromDB.eventDate !== eventDate) eventFromDB.eventDate = eventDate;

@@ -2,7 +2,7 @@ const User = require('./User');
 const mongoose = require('mongoose');
 
 const EventSchema = new mongoose.Schema({
-  host: {
+  hostId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
     required: true
@@ -11,7 +11,7 @@ const EventSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  game: {
+  gameId: {
     type: String,
     required: true
   },
@@ -31,7 +31,11 @@ const EventSchema = new mongoose.Schema({
   duration:{
       type: Number,
       required: true
-  }
+  },
+  participants:[{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User'
+  }]
 });
 
 const Event = mongoose.model('Event', EventSchema);
