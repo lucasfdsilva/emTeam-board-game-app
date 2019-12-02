@@ -34,7 +34,11 @@ const UserSchema = new mongoose.Schema({
   },
   passwordResetExpires: {
     type: Date,
-  }
+  },
+  joinedEvents: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Event',
+  }]
 });
 
 const User = mongoose.model('User', UserSchema);

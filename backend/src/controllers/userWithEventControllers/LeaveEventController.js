@@ -34,7 +34,9 @@ module.exports = {
         if(participantUserId == userId){
 
           eventFromDB.participants.splice(index, 1);
+          userFromDB.joinedEvents.splice(eventId, 1);
           eventFromDB.save();
+          userFromDB.save();
 
           res.status(200).json({ message: "User left event successfully"});
         }

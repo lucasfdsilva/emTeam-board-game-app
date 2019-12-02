@@ -42,7 +42,9 @@ module.exports = {
 
       //Adds user to participants array
       eventFromDB.participants.push(userFromDB);
+      userFromDB.joinedEvents.push(eventFromDB);
       await eventFromDB.save();
+      await userFromDB.save();
 
       res.status(200).json({ message: "User Joined Event Succesfully" });
 
