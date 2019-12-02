@@ -38,7 +38,26 @@ const UserSchema = new mongoose.Schema({
   joinedEvents: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Event',
-  }]
+  }],
+  fiveStarsReviews: {
+    type: Number,
+  },
+  fourStarsReviews: {
+    type: Number,
+  },
+  threeStarsReviews: {
+    type: Number,
+  },
+  twoStarsReviews: {
+    type: Number,
+  },
+  oneStarReviews: {
+    type: Number,
+  },
+  averageStar: {
+    type: Number,
+  },
+  
 });
 
 const User = mongoose.model('User', UserSchema);

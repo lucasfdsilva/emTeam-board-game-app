@@ -25,6 +25,7 @@ const DeleteEventController = require('./controllers/eventControllers/DeleteEven
 //User with Event Controllers
 const SignUpToEventController = require('./controllers/transactionControllers/SignUpToEventController');
 const LeaveEventController = require('./controllers/transactionControllers/LeaveEventController');
+const RateUserController = require('./controllers/transactionControllers/RateUserController');
 
 
 //Homepage Controllers
@@ -61,7 +62,7 @@ openRoutes.delete('/events/delete', DeleteEventController.deleteEvent);
 //User with Event Controllers
 openRoutes.put('/join_event', SignUpToEventController.signUpToEvent);
 openRoutes.put('/leave_event', LeaveEventController.leaveEvent);
-
+openRoutes.put('/rate_user', RateUserController.rateUser);
 
 module.exports = {
     openRoutes: openRoutes,
