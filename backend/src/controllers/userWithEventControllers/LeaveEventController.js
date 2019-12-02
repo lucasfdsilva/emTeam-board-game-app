@@ -3,44 +3,48 @@ const Event = require('../../models/Event');
 const User = require('../../models/User');
 
 module.exports = {
-  async signUpToEvent(req, res){
+
+  async leaveEvent(req, res){
 
     const { eventId, userId } = req.body;
 
     try{
 
+      //Check for missing data on request
       if(!eventId || !userId){
         res.status(400).json({ message: "Error - Missing Required Information from Request"});
       }
 
+      //retrieves user & event from DB
       let eventFromDB = await Event.findOne({ _id: eventId });
       let userFromDB = await User.findOne({ _id: userId });
-      
+
+      //Check if Event exists
       if(!eventFromDB){
         res.status(400).json({ message: "Error - Can't find Event with provided ID" });
       }
 
+      //Check if User exists
       if(!userFromDB){
         res.status(400).json({ message: "Error - Can't find User with provided ID" });
       }
 
-      if(eventFromDB.participants.length >= eventFromDB.numOfPlayers){
-        res.status(400).json({ message: "Error - Number Maximum of players reached" });
-      }
+      //Checks if user is already registered for event
+      await eventFromDB.participants.forEach((participantUserId, index) => {
+        if(participantUserId == userId){
 
-      eventFromDB.participants.forEach(function(item, index){
-        if(item == userId){
-          res.status(400).json({ message: "Error - User already joined the event"});
+          eventFromDB.participants.splice(index, 1);
+          eventFromDB.save();
+
+          res.status(200).json({ message: "User left event successfully"});
         }
       });
 
-      eventFromDB.participants.push(userFromDB);
-      await eventFromDB.save();
+      res.status(400).json({ message: "Error - User is not registered in this event" });
 
-      res.status(200).json({ message: "User Joined Event Succesfully" });
 
-    }catch(e){
-      res.status(500).json({ message: "Error - could not join event"})
+    }catch(err){
+      res.status(500).json({ message: "Error - could not leave event"});
     }
 
   }

@@ -23,7 +23,8 @@ const GetEventByGameController = require('./controllers/eventControllers/GetEven
 const DeleteEventController = require('./controllers/eventControllers/DeleteEventController');
 
 //User with Event Controllers
-const SignUpToEventController = require('./controllers/userWithEventsControllers/SignUpToEventController');
+const SignUpToEventController = require('./controllers/userWithEventControllers/SignUpToEventController');
+const LeaveEventController = require('./controllers/userWithEventControllers/LeaveEventController');
 
 
 //Homepage Controllers
@@ -60,6 +61,7 @@ openRoutes.delete('/events/delete', DeleteEventController.deleteEvent);
 
 //User with Event Controllers
 openRoutes.put('/join_event', SignUpToEventController.signUpToEvent);
+openRoutes.put('/leave_event', LeaveEventController.leaveEvent);
 
 
 module.exports = {
