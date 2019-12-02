@@ -23,8 +23,8 @@ const GetEventByGameController = require('./controllers/eventControllers/GetEven
 const DeleteEventController = require('./controllers/eventControllers/DeleteEventController');
 
 //User with Event Controllers
-const SignUpToEventController = require('./controllers/userWithEventControllers/SignUpToEventController');
-const LeaveEventController = require('./controllers/userWithEventControllers/LeaveEventController');
+const SignUpToEventController = require('./controllers/transactionControllers/SignUpToEventController');
+const LeaveEventController = require('./controllers/transactionControllers/LeaveEventController');
 
 
 //Homepage Controllers
@@ -35,7 +35,6 @@ const openRoutes = express.Router();
 const protectedRoutes = express.Router();
 
 protectedRoutes.use(authMiddleware)
-
 
 //Homepage Routes
 openRoutes.get('/', HomePageController.homePage);
