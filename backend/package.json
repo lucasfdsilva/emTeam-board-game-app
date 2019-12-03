@@ -6,22 +6,22 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "devStart": "nodemon ./src/server.js",
-	"start": "node ./src/server.js"
+    "start": "node ./src/server.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@sendgrid/mail": "^6.4.0",
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.7.7",
-    "bcryptjs": "^2.4.3",
     "nodemon": "^1.19.4",
-    "socket.io": "2.3.0"
+    "socket.io": "^2.3.0"
   },
   "devDependencies": {
     "nodemon": "^1.19.4"
