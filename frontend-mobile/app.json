@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "Games Tinder",
-    "slug": "NewProject",
+    "name": "emGameFinder",
+    "slug": "emGameFind",
     "privacy": "public",
     "sdkVersion": "35.0.0",
     "platforms": [
