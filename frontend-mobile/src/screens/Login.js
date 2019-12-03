@@ -20,16 +20,16 @@ const Login = ({ navigation }) => {
 	const [password, setPassword] = useState('');
 
 
-	// async function checkLoginInfo(){
-	// 	const tempId = await AsyncStorage.getItem('id');
-	// 	const tempToken = await AsyncStorage.getItem('accessToken');
-	// 	if (tempId || accessToken) 
-	// 	{navigation.navigate('Home')}
-	// }
+	async function checkLoginInfo(){
+		const tempId = await AsyncStorage.getItem('id');
+		const tempToken = await AsyncStorage.getItem('accessToken');
+		if (tempId || accessToken) 
+		{navigation.navigate('Home')}
+	}
 
-	// useEffect( () => {
-	// 	checkLoginInfo()
-	// },[]);
+	useEffect( () => {
+		checkLoginInfo()
+	},[]);
 
 	async function handleLogin() {
 		try{
