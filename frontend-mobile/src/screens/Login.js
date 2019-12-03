@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react';
+import React, { Component, useState, useEffect } from 'react';
 import {
 	StyleSheet,
 	Text,
@@ -19,6 +19,18 @@ const Login = ({ navigation }) => {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 
+
+	// async function checkLoginInfo(){
+	// 	const tempId = await AsyncStorage.getItem('id');
+	// 	const tempToken = await AsyncStorage.getItem('accessToken');
+	// 	if (tempId || accessToken) 
+	// 	{navigation.navigate('Home')}
+	// }
+
+	// useEffect( () => {
+	// 	checkLoginInfo()
+	// },[]);
+
 	async function handleLogin() {
 		try{
 		const response = await axios({
@@ -29,10 +41,10 @@ const Login = ({ navigation }) => {
 		//console.log('HELLO')
 		console.log(response.data)
 		await AsyncStorage.setItem('accessToken', response.data.accessToken);
-		const tempToken = await AsyncStorage.getItem('accessToken');
-		await AsyncStorage.setItem('id', response.data.id);
-		const tempId = await AsyncStorage.getItem('id');
 
+		await AsyncStorage.setItem('id', response.data.id);
+
+		//console.log(tempToken)
 
 
 		if (response.data.message == "User Logged in succesfully") {

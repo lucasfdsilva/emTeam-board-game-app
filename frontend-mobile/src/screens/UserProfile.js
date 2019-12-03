@@ -21,9 +21,19 @@ const UserProfile  = ({ navigation }) => {
 			
 		});
 		alert(`Hello, ${response.data.message.firstName}`)
-		console.log(response.data)
+		//console.log(response.data)
 		setProfile(response.data.message)
-		
+
+		try {
+			  const value = await AsyncStorage.getItem('accessToken')
+			  console.log(value)
+		} catch(e) {
+			  // read error
+			}
+		  
+			
+		  
+		  
 		// myName = `${response.data.message.firstName}`
 		// console.log(myName);
 		// await AsyncStorage.setItem('myName', response.data.message.firstName);
@@ -50,7 +60,7 @@ const UserProfile  = ({ navigation }) => {
             <Logo/>
 
             <View style = {styles.emailBox}>
-			<Text style = {styles.titleText}>{profile.firstName} {profile.lastName}</Text>
+		<Text style = {styles.titleText}>{profile.firstName} {profile.lastName} </Text>
             </View> 
 
             <View style = {styles.phoneBox}>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, Component} from 'react';
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity, AsyncStorage } from 'react-native';
 import {Feather} from  '@expo/vector-icons';
 import SearchBar from '../components/SearchBar';
 import GameList from '../components/GameList';
@@ -27,9 +27,16 @@ import Logo from '../components/Logo';
         } catch (e) {
             setErrorMessage('wooops someting did not work correctly');
         }
+
     }
+
+  
+
+    
+
     useEffect(() => {
         searchApi('');
+   
     }, []);
 
     const startApi = async (limit) => {
