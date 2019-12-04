@@ -41,14 +41,15 @@ const Login = ({ navigation }) => {
 		//console.log('HELLO')
 		console.log(response.data)
 		await AsyncStorage.setItem('accessToken', response.data.accessToken);
-
+		const tempId = await AsyncStorage.getItem('id');
 		await AsyncStorage.setItem('id', response.data.id);
+		const tempToken = await AsyncStorage.getItem('accessToken');
 
 		//console.log(tempToken)
 
 
 		if (response.data.message == "User Logged in succesfully") {
-			navigation.navigate('Profile',{tempId}) 
+			navigation.navigate('Profile', {tempId}) 
 		} 
 		
 	}catch(e){alert('Login failed, please try again');}
