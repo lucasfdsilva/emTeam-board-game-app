@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "Games Tinder",
-    "slug": "NewProject",
+    "name": "BoardGeek",
+    "slug": "emGameFind",
     "privacy": "public",
     "sdkVersion": "35.0.0",
     "platforms": [
@@ -11,9 +11,9 @@
     ],
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./src/images/logo.png",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./src/images/logo.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -24,7 +24,11 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.emteam.boardgeek"
+    },
+    "android": {
+      "package": "com.emteam.boardgeek"
     }
   }
 }
