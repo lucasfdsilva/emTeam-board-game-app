@@ -20,6 +20,7 @@ const GetAllEventsController = require('./controllers/eventControllers/GetAllEve
 const GetEventByIdController = require('./controllers/eventControllers/GetEventByIdController');
 const GetEventByHostIdController = require('./controllers/eventControllers/GetEventByHostIdController');
 const GetEventByGameController = require('./controllers/eventControllers/GetEventByGameController');
+const GetEventIsParticipating = require('./controllers/eventControllers/GetEventsIsParticipating');
 const DeleteEventController = require('./controllers/eventControllers/DeleteEventController');
 
 //User with Event Controllers
@@ -57,6 +58,7 @@ openRoutes.get('/events', GetAllEventsController.getEvents);
 openRoutes.get('/events/:eventId', GetEventByIdController.getEventById);
 openRoutes.get('/events/host/:hostId', GetEventByHostIdController.getEventByHostId);
 openRoutes.get('/events/game/:gameId', GetEventByGameController.getEventByGame);
+openRoutes.get('/events/participants/:userId', GetEventIsParticipating.getEventIsParticipating);
 openRoutes.delete('/events/delete', DeleteEventController.deleteEvent);
 
 //User with Event Controllers
