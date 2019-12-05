@@ -12,7 +12,7 @@ module.exports = {
       return res.status(404).send({ Message: "Unable to locate an event with provided host ID." });
     else {
       try {
-        res.status(200).json(eventFromDB);
+        res.status(200).json({message: eventFromDB});
       } catch {
         res.status(500).send();
       }
