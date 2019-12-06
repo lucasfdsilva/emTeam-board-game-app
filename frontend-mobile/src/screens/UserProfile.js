@@ -5,25 +5,35 @@ import Logo from '../components/Logo';
 
 
 const UserProfile  = ({ navigation }) => { 
-	const [myName, setMyName] = useState(true);
+	const [myName, setMyName] = useState('');
 	const [profile, setProfile,] = useState([]);
+	const [tempId, SetTempId] = useState('');
+	const [id, setId] = useState('');
+
 	//const myname = response.data.message.firstName;
 
 	try{
+	// async function loadProfileInfo(){
+	// //const tempId = navigation.getParam('tempId');
+	// const tempId = await AsyncStorage.getItem('id');
+	// }
+
+	// useEffect( () => {
+	// 	loadProfileInfo()
+	// },[]);
 	
-	const tempId = navigation.getParam('tempId');
-		
 		async function loadProfile(){	
+			const tempId = await AsyncStorage.getItem('id');
 			const response = await axios({
 			method: 'get',
-			url: `http://apiboardgeek.co.uk/users/${tempId}`,
+			url: `http://apiboardgeek.co.uk/users/`+tempId,
 			//data: { id: tempId }
 			
 		});
-		alert(`Hello, ${response.data.message.firstName}`)
-		//console.log(response.data)
+		//alert(`Hello, ${response.data.message.firstName}`)
+		console.log(response.data)
 		setProfile(response.data.message)
-
+	
 		try {
 			  const value = await AsyncStorage.getItem('accessToken')
 			  console.log(value)
@@ -58,7 +68,9 @@ const UserProfile  = ({ navigation }) => {
 		return(
         <View style = {styles.container}>
             <Logo/>
-
+			<TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Home')}>
+				<Text style={styles.buttonText}>Go to Dashboard</Text>
+			</TouchableOpacity>
             <View style = {styles.emailBox}>
 		<Text style = {styles.titleText}>{profile.firstName} {profile.lastName} </Text>
             </View> 
@@ -90,10 +102,11 @@ const UserProfile  = ({ navigation }) => {
             onPress={() => navigation.navigate('Home')}
           />
         </View> */}
-
-			<TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Home')}>
-				<Text style={styles.buttonText}>Go to Dashboard</Text>
+			<TouchableOpacity style={styles.button2} onPress={() => navigation.navigate('EditProfile')}>
+				<Text style={styles.buttonText}>Edit Profile</Text>
 			</TouchableOpacity>
+
+			
 		
 			{/* <View style = {styles.signupTextContainer}>
             	<Text style = {styles.signupText}> Check Anthony's part  </Text>
@@ -155,6 +168,15 @@ const styles = StyleSheet.create({
 
 	button: {
 		width: 200,
+		backgroundColor: '#a19f9f',
+		borderRadius: 10,
+		marginVertical: 10,
+		paddingVertical: 10,
+
+	},
+
+	button2: {
+		width: 100,
 		backgroundColor: '#a19f9f',
 		borderRadius: 10,
 		marginVertical: 10,

@@ -8,8 +8,9 @@ import {             StyleSheet,
 	AsyncStorage,
 	Alert } from 'react-native';
 
+	import axios from 'axios';
 import Logo from '../components/Logo';
-import SignupForm from '../components/SignupForm';
+//import SignupForm from '../components/SignupForm';
 
 const Signup  = ({ navigation }) => { 
 	                
@@ -72,6 +73,7 @@ Alert.alert(
         return (
 			<KeyboardAvoidingView style={styles.container2} behavior = "padding" enabled>
             <View>
+			<Logo/>
                 <TextInput style={styles.inputBox}
                 underlineColorAndroid='rgba(0,0,0,0)'
                 placeholder="First Name"
@@ -115,18 +117,14 @@ Alert.alert(
                 <TouchableOpacity style = {styles.button} onPress={handleRegister}>
                     <Text style = {styles.buttonText}>Complete Registration</Text>
                 </TouchableOpacity>
-            </View>
-      
-        <View style = {styles.container}>
-            <Logo/>
-            <SignupForm type="Signup"/>
-            <View style = {styles.signupTextContainer}>
+				<View style = {styles.signupTextContainer}>
             	<Text style = {styles.signupText}> Already have an account? </Text>
             	<TouchableOpacity onPress={() => navigation.navigate('Login')}>
             	<Text style = {styles.signupButton}> Sign In</Text>
             	</TouchableOpacity>
             </View>
-        </View>
+            </View>
+      
 		</KeyboardAvoidingView>
         );
 

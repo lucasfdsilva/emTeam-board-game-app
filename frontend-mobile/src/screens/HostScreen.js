@@ -1,22 +1,122 @@
 import React, {useState, useEffect,Component} from 'react';
-import {View, Text, FlatList, Image, StyleSheet, TouchableOpacity} from 'react-native';
-
+import {View, Text, FlatList, Image, StyleSheet, TouchableOpacity,Alert, KeyboardAvoidingView } from 'react-native';
+import { TextInput } from 'react-native-gesture-handler';
+import axios from 'axios';
+import Constants from 'expo-constants';
 
 const HostScreen = ({navigation}) => {
-    const id = navigation.getParam('id');
+    const gameId = navigation.getParam('id');
     const pic = navigation.getParam('pic');
     const name = navigation.getParam('name');
     const max = navigation.getParam('max');
     const min = navigation.getParam('min');
-    return (<View>
+    const [eventName, setEventName] = useState('');
+    const [location, setLocation] = useState('');
+    const [numOfPlayers, setNumOfPlayers] = useState('');
+    const [eventDate, setEventDate] = useState('');
+    const [duration, setDuration] = useState('');  
+    async function Event() {console.log("HElp")}
+    async function AddEvent() {
+ try{
+		const response = await axios({
+			method: 'post',
+			url: 'http://apiboardgeek.co.uk/events/create',
+			data: { eventName: eventName,
+                location:  location,
+                numOfPlayers:numOfPlayers,
+                eventDate: eventDate,
+                duration: duration,
+                gameId: gameId,
+                hostId: '5ddda95251d90300133a6cf6' }
+		});
+		//console.log('HELLO')
+
+            if (response.status == 201) {
+                console.log(response.data)
+                alert('Event Created')
+                navigation.navigate('Home')
+            } else {
+                alert('Please enter vaild information')
+            }
+      
+           // console.log("catch")
+        
+
+
+
+    }catch{
+        //console.log("catch")
+    }
+	
+		
+	}
+
+    
+    
+    
+    return (
+        <KeyboardAvoidingView style={styles.container} /*behavior = "padding" enabled */ behavior={"position"} keyboardVerticalOffset={Constants.statusBarHeight}>
+        <View >
+        
         <Image style={styles.image} source={{ uri: pic }} />
-        <View>
+        <View /*style={styles.container}*/>
         <Text>You wan to host a game of {name}</Text>
-        <Text>Game ID is {id}</Text>
+        <Text>Game ID is {gameId}</Text>
         <Text>recomended max players {max}</Text>
         <Text>recomended min players {min}</Text>
+        <View /*style={styles.container2}*/>
+        <TextInput style={styles.inputBox}
+                autoCapitalize="none" // was auto capping the first letter
+                autoCorrect={false} //game names are werid 
+                placeholder="Event name"
+                value={eventName}
+                onChangeText={setEventName}
+            />
+             <TextInput style={styles.inputBox}
+                autoCapitalize="none" // was auto capping the first letter
+                autoCorrect={false} //game names are werid 
+                placeholder="location"
+                value={location}
+                onChangeText={setLocation}
+            />
+            <TextInput style={styles.inputBox}
+                autoCapitalize="none" // was auto capping the first letter
+                autoCorrect={false} //game names are werid 
+                placeholder="How many total players"
+                value={numOfPlayers}
+                onChangeText={setNumOfPlayers}
+            />
+            <TextInput style={styles.inputBox}
+                autoCapitalize="none" // was auto capping the first letter
+                autoCorrect={false} //game names are werid 
+                placeholder="Date"
+                value={eventDate}
+                onChangeText={setEventDate}
+            />
+            <TextInput style={styles.inputBox}
+                autoCapitalize="none" // was auto capping the first letter
+                autoCorrect={false} //game names are werid 
+                placeholder="Duration"
+                value={duration}
+                onChangeText={setDuration}
+            />
+           
+            <TouchableOpacity style={styles.but} onPress={Event}>
+            <Text>help</Text>
+
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.but} onPress={AddEvent}>
+            <Text>Submit Event</Text>
+
+            </TouchableOpacity>
+            </View>
+        
         </View>
+       
+
     </View>
+     </KeyboardAvoidingView>
+
     );
 };
 const styles = StyleSheet.create({
@@ -26,6 +126,43 @@ const styles = StyleSheet.create({
         alignItems: 'flex-end',
         marginLeft: 10,
         marginTop: 30,
-    }
+    },
+    // container3 : {
+	// 	flexGrow: 1,
+	// 	justifyContent: 'center',
+	// 	alignItems: 'center'
+	// },
+    inputBox: {
+		width: 300,
+		backgroundColor: '#dedcdc',
+		borderRadius: 25,
+		paddingHorizontal: 16,
+		fontSize: 16,
+		marginVertical: 10,
+		paddingVertical: 12
+
+    },
+    // container2 : {
+	// 	flexGrow: 1,
+	// 	justifyContent: 'center',
+	// 	alignItems: 'center'
+    // },
+    container : {
+		flexGrow: 1,
+		justifyContent: 'center',
+		alignItems: 'center'
+    },
+    but: {
+        backgroundColor: '#add8e6',  //Light blue
+        alignSelf: "center",
+        padding: 10,
+        borderRadius: 4,
+        fontWeight: "bold",
+        fontSize: 20,
+        margin:5,
+    },
+  
+  
+
 }); 
 export default HostScreen;

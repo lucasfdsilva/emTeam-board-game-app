@@ -12,10 +12,14 @@ import RestorePassword from '../screens/RestorePassword';
 import Signup from '../screens/Signup';
 import UserProfile from '../screens/UserProfile';
 import SettingsScreen from '../screens/SettingsScreen';
+import MyGamesScreen from '../screens/MyGamesScreen';
+import EventsScreen from '../screens/EventsScreen';
+import EditProfile from  '../screens/EditProfile';
 
 
 
 const MyStackNavigator = createStackNavigator(
+    
 {
     Home: HomeScreen,
     Game: GameScreen,
@@ -27,6 +31,10 @@ const MyStackNavigator = createStackNavigator(
     SignUp: Signup,
     Profile: UserProfile,
     Settings: SettingsScreen,
+    Events: MyGamesScreen, 
+    Event: EventsScreen,
+    EditProfile: EditProfile,
+
 
 
 },
@@ -38,9 +46,14 @@ const MyStackNavigator = createStackNavigator(
     }
 }
 );
+
 const AppContainer = createAppContainer(MyStackNavigator);
 export default class StackNavigator extends Component{
     render(){
-        return <AppContainer screenProps={{openDraw: ()=> this.props.navigation.dispatch(DrawerActions.openDrawer())}}/>;
+        return <AppContainer screenProps={
+            {openDraw: ()=> this.props.navigation.openDrawer()}
+        
+        
+    }/>;
     }
 }

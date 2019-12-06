@@ -1,5 +1,5 @@
 import React, { useState, useEffect, Component} from 'react';
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity, AsyncStorage } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
 import {Feather} from  '@expo/vector-icons';
 import SearchBar from '../components/SearchBar';
 import GameList from '../components/GameList';
@@ -7,10 +7,11 @@ import gameApi from '../api/gameApi';
 import Logo from '../components/Logo';
 
  
-    const HomeScreen = ({ navigation, screenProps }) => {
+    const HomeScreen = ({ navigation,screenProps}) => {
     const [name, setTerm] = useState('');
     const [results, setResults,] = useState([]);
     const [errorMessage, setErrorMessage] = useState('');
+    //const openDraw = ()=> this.props.navigation.openDrawer();
 
     const searchApi = async (searchName) => {
         try {
@@ -27,16 +28,9 @@ import Logo from '../components/Logo';
         } catch (e) {
             setErrorMessage('wooops someting did not work correctly');
         }
-
     }
-
-  
-
-    
-
     useEffect(() => {
         searchApi('');
-   
     }, []);
 
     const startApi = async (limit) => {
