@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "BoardGeek",
-    "slug": "emGameFind",
+    "name": "Board Geek",
+    "slug": "Board-Geek",
     "privacy": "public",
     "sdkVersion": "35.0.0",
     "platforms": [
@@ -9,7 +9,7 @@
       "android",
       "web"
     ],
-    "version": "1.0.0",
+    "version": "2.0.0",
     "orientation": "portrait",
     "icon": "./src/images/logo.png",
     "splash": {
