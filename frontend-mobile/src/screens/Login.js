@@ -18,13 +18,15 @@ import Logo from '../components/Logo';
 const Login = ({ navigation }) => {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
+	const [tempId, SetTempId] = useState('');
 
 
 	async function checkLoginInfo(){
 		const tempId = await AsyncStorage.getItem('id');
 		const tempToken = await AsyncStorage.getItem('accessToken');
-		if (tempId || accessToken) 
+		if (tempId || tempToken) 
 		{navigation.navigate('Home')}
+
 	}
 
 	useEffect( () => {
@@ -41,15 +43,14 @@ const Login = ({ navigation }) => {
 		//console.log('HELLO')
 		console.log(response.data)
 		await AsyncStorage.setItem('accessToken', response.data.accessToken);
-		const tempId = await AsyncStorage.getItem('id');
-		await AsyncStorage.setItem('id', response.data.id);
 		const tempToken = await AsyncStorage.getItem('accessToken');
-
+		await AsyncStorage.setItem('id', response.data.id);
+		const tempId = await AsyncStorage.getItem('id');
 		//console.log(tempToken)
 
 
 		if (response.data.message == "User Logged in succesfully") {
-			navigation.navigate('Profile', {tempId}) 
+			navigation.navigate('Profile'/*, {tempId}*/) 
 		} 
 		
 	}catch(e){alert('Login failed, please try again');}

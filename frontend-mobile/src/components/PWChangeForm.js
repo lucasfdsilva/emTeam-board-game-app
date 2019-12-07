@@ -29,6 +29,10 @@ const PWChangeForm = ({  navigation }) => {
 			
         console.log(response.data)
         //console.log('HELLO!!!')
+
+		await AsyncStorage.setItem('message', response.data.message);
+        const tempMessage = await AsyncStorage.getItem('message');
+
 		//Actions.Login();
 
         navigation.navigate('Profile');

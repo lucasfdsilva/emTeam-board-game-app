@@ -68,7 +68,7 @@ const SignupForm = ({  navigation }) => {
               'Board Geek:',
                response.data.message + ', verification link was sent to: ' + response.data.user.email,
               [
-                {text: 'Go to login', onPress: () => navigation.navigate('Login')},
+                {text: 'Go to login', onPress: () => navigation.navigate('SignUp')},
               ],
             );
         }
