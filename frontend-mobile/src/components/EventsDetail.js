@@ -1,24 +1,34 @@
 import React from 'react';
-import { View, Image, Text, StyleSheet } from 'react-native';
+import { View, Image, Text, StyleSheet, TouchableOpacity } from 'react-native';
 
  
 const EventsDetail = ({ resultsEvents}) => {
+
+    // resultsEvents.forEach(element=>{
+        //     console.log(element.eventName)
+            
+       //     });
   
     return (<View style={styles.container}>
         <Text style={styles.name}>{resultsEvents.eventName}</Text>
-        <Text>{resultEvents.location}</Text>
-        <Text>{resultEvents.eventDate}</Text>
-        <TouchableOpacity style={styles.but}onPress={() => null}>
-            <Text>Join Event</Text>
-        </TouchableOpacity>
+        <Text style={styles.text}>Location: {resultsEvents.location}</Text>
+        <Text style={styles.text}>Date:{resultsEvents.eventDate}</Text>
+        <Text style={styles.text}>Duration:{resultsEvents.duration}</Text>
+        <Text style={styles.text}>Spaces: {resultsEvents.numOfPlayers}</Text>
+
+
     </View>);
 };
 
 
 const styles = StyleSheet.create({
     container: {
-        marginLeft: 15,
-        backgroundColor:'#add8e6',  //Light blue
+        margin: 15,
+        backgroundColor: '#dedcdc',  //Light blue
+        fontSize: 25,
+        padding: 15,
+        borderRadius: 4,
+        marginBottom: 30,
 
     },
     image: {
@@ -30,10 +40,11 @@ const styles = StyleSheet.create({
     },
     name: {
         fontWeight: 'bold',
-        fontSize: 15 //native size is 14
+        fontSize: 25,
+        
     },
     but: {
-        backgroundColor: '#add8e6',  //Light blue
+        backgroundColor: '#dedcdc',  //Light blue
         alignSelf: "center",
         padding: 10,
         borderRadius: 4,

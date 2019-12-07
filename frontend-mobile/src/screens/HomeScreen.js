@@ -26,7 +26,7 @@ import Logo from '../components/Logo';
             });
             setResults(response.data.games);
         } catch (e) {
-            setErrorMessage('wooops someting did not work correctly');
+            setErrorMessage('  External API is down, please try again later');
         }
     }
     useEffect(() => {
@@ -47,7 +47,7 @@ import Logo from '../components/Logo';
             //console.log("request made"); for testing
 
         } catch (e) {
-            setErrorMessage('wooops someting did not work correctly');
+            setErrorMessage('External API is down, please try again later');
         }
     }
 

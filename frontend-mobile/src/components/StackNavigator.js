@@ -15,7 +15,8 @@ import SettingsScreen from '../screens/SettingsScreen';
 import MyGamesScreen from '../screens/MyGamesScreen';
 import EventsScreen from '../screens/EventsScreen';
 import EditProfile from  '../screens/EditProfile';
-
+import EventsScreenHost from '../screens/EventsScreenHost';
+import EventsScreenJoin from '../screens/EventsScreenJoin';
 
 
 const MyStackNavigator = createStackNavigator(
@@ -34,7 +35,8 @@ const MyStackNavigator = createStackNavigator(
     Events: MyGamesScreen, 
     Event: EventsScreen,
     EditProfile: EditProfile,
-
+    EventH: EventsScreenHost,
+    EventJ: EventsScreenJoin,
 
 
 },

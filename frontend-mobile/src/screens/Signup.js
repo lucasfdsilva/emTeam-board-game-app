@@ -10,6 +10,7 @@ import {             StyleSheet,
 
 	import axios from 'axios';
 import Logo from '../components/Logo';
+import KeyboardAwareScrollView from 'react-native-keyboard-aware-scroll-view';
 //import SignupForm from '../components/SignupForm';
 
 const Signup  = ({ navigation }) => { 
@@ -71,7 +72,8 @@ Alert.alert(
 }	
     
         return (
-			<KeyboardAvoidingView style={styles.container2} behavior = "padding" enabled>
+			<KeyboardAvoidingView style={styles.container2} behavior = "padding">
+
             <View>
 			<Logo/>
                 <TextInput style={styles.inputBox}
@@ -123,8 +125,9 @@ Alert.alert(
             	<Text style = {styles.signupButton}> Sign In</Text>
             	</TouchableOpacity>
             </View>
-            </View>
-      
+			</View>
+            
+
 		</KeyboardAvoidingView>
         );
 

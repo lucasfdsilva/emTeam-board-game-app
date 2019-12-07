@@ -5,21 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8bd3f0f8-8659-4193-ac98-c89eb6e04d76" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/app.json" beforeDir="false" afterPath="$PROJECT_DIR$/app.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/api.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/DrawerNavigator.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/DrawerNavigator.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/PWChangeForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PWChangeForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/SignupForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SignupForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/EventsDetail.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/EventsDetail.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/EventsList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/EventsList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/SearchBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SearchBar.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/StackNavigator.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/StackNavigator.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/screens/EditProfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/screens/EditProfile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/screens/EventsScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/screens/EventsScreen.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/screens/FindScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/screens/FindScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/screens/GameScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/screens/GameScreen.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/screens/HomeScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/screens/HomeScreen.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/screens/HostScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/screens/HostScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/screens/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/screens/Login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/screens/MyGamesScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/screens/MyGamesScreen.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/screens/SettingsScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/screens/SettingsScreen.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/screens/Signup.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/screens/Signup.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/screens/UserProfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/screens/UserProfile.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -63,9 +64,9 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="73" />
-    <option name="y" value="131" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
     <option name="width" value="1550" />
     <option name="height" value="1000" />
   </component>
@@ -76,7 +77,6 @@
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane" />
       <pane id="AndroidView">
         <subPane>
@@ -89,6 +89,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -186,10 +187,10 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
-      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.24040511" />
+      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.15138593" />
       <window_info id="Structure" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info id="Build Variants" order="4" side_tool="true" />
@@ -201,7 +202,7 @@
       <window_info anchor="bottom" id="Logcat" order="1" sideWeight="0.49932885" weight="0.3298731" />
       <window_info anchor="bottom" id="TODO" order="2" />
       <window_info anchor="bottom" id="Terminal" order="3" weight="0.3298731" />
-      <window_info active="true" anchor="bottom" id="Event Log" order="4" sideWeight="0.50053304" side_tool="true" visible="true" weight="0.32936078" />
+      <window_info active="true" anchor="bottom" id="Event Log" order="4" sideWeight="0.50053304" side_tool="true" visible="true" weight="0.2892741" />
       <window_info anchor="bottom" id="Android Profiler" order="5" show_stripe_button="false" />
       <window_info anchor="bottom" id="Run" order="6" sideWeight="0.49733475" weight="0.30985916" />
       <window_info anchor="bottom" id="Debug" order="7" />

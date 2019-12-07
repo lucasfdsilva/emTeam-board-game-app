@@ -19,7 +19,7 @@ const SettingsScreen = ({ navigation }) => {
     const [password, setPassword] = useState('');
     const tempId = navigation.getParam('tempId');
     console.log(tempId)
-    try{
+    
     async function CheckDetail() {
 
 		const response = await axios({
@@ -35,7 +35,7 @@ const SettingsScreen = ({ navigation }) => {
 		DeletePro();
 		}
 	}
-}catch(e){alert('Uh-oh, something went wrong. Maybe there is nothing to delete.')}
+
 	async function DeletePro() {
 		const tempId = await AsyncStorage.getItem('id');
 
@@ -46,8 +46,8 @@ const SettingsScreen = ({ navigation }) => {
 		});
 		await AsyncStorage.removeItem('id');
 		await AsyncStorage.removeItem('accessToken');
-
-		console.log(response1.data)
+		
+		
 		if(response1.status == 200) {
 			navigation.navigate('Login')
 			alert('Sorry to see you leave, account is deleted now')
@@ -82,7 +82,7 @@ const SettingsScreen = ({ navigation }) => {
 				onChangeText={setPassword}
 				ref={(input) => this.password = input}
 			/>
-			<TouchableOpacity style={styles.button} onPress={CheckDetail}>
+			<TouchableOpacity style={styles.button} onPress={CheckDetail} /*onPress:() => navigation.navigate('Login')*/ >
 				<Text style={styles.buttonText}>Delete</Text>
 			</TouchableOpacity>
 			</KeyboardAvoidingView>

@@ -16,6 +16,8 @@ import Signup from '../screens/Signup';
 import MyGamesScreen from '../screens/MyGamesScreen';
 import EventsScreen from '../screens/EventsScreen';
 import EditProfile from  '../screens/EditProfile';
+import EventsScreenHost from '../screens/EventsScreenHost'
+import EventsScreenJoin from '../screens/EventsScreenJoin'
 
 
 //const DrawerNavi = ({ navigation }) => {
@@ -54,6 +56,8 @@ const MyDrawerNavigator = createDrawerNavigator ({
         drawerLabel: 'My Events',
     }, 
     Event: {screen: EventsScreen},
+    EventH:{ screen: EventsScreenHost},
+    EventJ:{ screen: EventsScreenJoin},
 
     EditProfile: {screen: EditProfile},
 

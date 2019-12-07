@@ -27,8 +27,8 @@ const SearchBar = ({ term, onSearch, onTermSearch,screenProps }) => {
 
 const styles = StyleSheet.create({
     background: {
-        marginTop: 30,
-        backgroundColor: '#add8e6',  //Light blue
+        marginTop: 40,
+        backgroundColor: '#dedcdc',  //gray
         height: 30,
         borderRadius: 5, //round coners 
         marginHorizontal: 10,

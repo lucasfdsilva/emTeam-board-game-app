@@ -29,11 +29,11 @@ import gameApi from '../api/gameApi'
   // },[]);   
   // console.log(result); testing to see if result was getting anything it was. 
 
-    return (<View style={styles.page}>
+    return (<View>
         <TouchableOpacity  onPress={() => screenProps.openDraw()}> 
                 <Feather style={styles.iconStyle} name ="menu"></Feather>
             </TouchableOpacity>
-        
+        <View style={styles.page}>
         <View style={{flexDirection: "row"}}>
             
         <Image style={styles.image} source={{ uri: pic }} />
@@ -47,7 +47,7 @@ import gameApi from '../api/gameApi'
         </TouchableOpacity>
         </View>
         </View>
-        <View style={{ flex: 1 }}>
+
         <Text>{name}</Text>
         <Text>{des}</Text>
         </View>
@@ -67,23 +67,24 @@ const styles = StyleSheet.create({
         marginTop: 40,
     },
     but: {
-        backgroundColor: '#add8e6',  //Light blue
+        backgroundColor: '#dedcdc',  //Light blue
         alignSelf: "center",
-        padding: 10,
+        padding: 15,
         borderRadius: 4,
         fontWeight: "bold",
-        fontSize: 20,
-        margin:5,
+        fontSize: 100,
+        margin:15,
     },
     iconStyle: {
         fontSize: 25,
         alignSelf: 'auto',
-        marginTop: 15,
-        
-
+        marginTop: 35,
     },
+        
     page:{
         marginTop: 30,
+        marginLeft: 15,
+        marginRight: 15,
     },
     col:{
         flexDirection: "column",
