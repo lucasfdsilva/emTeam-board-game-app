@@ -32,7 +32,9 @@ module.exports = {
                     duration: duration,
                     participants: hostId
                 };
-                await Event.create(event).then(console.log('event created')).catch(console.log('event not created'));
+                eventFromDB = await Event.create(event).then(console.log('event created')).catch(console.log('event not created'));
+                await userFromDB.joinedEvents.push(eventFromDB);
+                userFromDB.save();
 
                 res.status(200).json({Message: 'Event Created Successfully!'});
                 console.log("foi")

@@ -6,6 +6,7 @@ module.exports = {
   async signUpToEvent(req, res){
 
     const { eventId, userId } = req.body;
+    let alreadyJoined = false;
 
     try{
 
@@ -34,19 +35,23 @@ module.exports = {
       }
 
       //Checks if user is already registered for event
-      eventFromDB.participants.forEach(function(participantUserId, index){
-        if(participantUserId == userId){
-          res.status(400).json({ message: "Error - User already joined the event"});
+      eventFromDB.participants.forEach((participant) => {
+        if(participant == userId){
+          alreadyJoined = true
         }
       });
 
-      //Adds user to participants array
-      eventFromDB.participants.push(userFromDB);
-      userFromDB.joinedEvents.push(eventFromDB);
-      await eventFromDB.save();
-      await userFromDB.save();
+      if(alreadyJoined == true){
+        res.status(400).json({ message: "Error - User already joined the event"});
+      }else{
+        //Adds user to participants array
+        eventFromDB.participants.push(userFromDB);
+        userFromDB.joinedEvents.push(eventFromDB);
+        await eventFromDB.save();
+        await userFromDB.save();
 
-      res.status(200).json({ message: "User Joined Event Succesfully" });
+        res.status(200).json({ message: "User Joined Event Succesfully" });
+      }
 
     }catch(e){
       res.status(500).json({ message: "Error - could not join event"});

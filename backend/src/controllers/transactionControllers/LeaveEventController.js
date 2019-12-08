@@ -30,10 +30,10 @@ module.exports = {
       }
 
       //Checks if user is already registered for event
-      await eventFromDB.participants.forEach((participantUserId, index) => {
-        if(participantUserId == userId){
+      await eventFromDB.participants.forEach((participant) => {
+        if(participant == userId){
 
-          eventFromDB.participants.splice(index, 1);
+          eventFromDB.participants.splice(participant, 1);
           userFromDB.joinedEvents.splice(eventId, 1);
           eventFromDB.save();
           userFromDB.save();
