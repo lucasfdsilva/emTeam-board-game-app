@@ -17,7 +17,7 @@ module.exports = {
       if (eventFromDB.length > 0) {
         for (event of eventFromDB) {
           for (participant of event.participants) {
-            let user = await User.find({ _id: participant });
+            let user = await User.findOne({ _id: participant });
 
             if (user) {
               event.participantsProfiles.push(user);

@@ -22,7 +22,7 @@ module.exports = {
 
         if (userFromDB.joinedEvents.length > 0){        
           for (joinedEvent of userFromDB.joinedEvents) {
-            let event = await Event.find({ _id: joinedEvent});
+            let event = await Event.findOne({ _id: joinedEvent});
             console.log(event); 
   
             if(event){ 
