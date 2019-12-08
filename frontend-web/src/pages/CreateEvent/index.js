@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import backendApi from '../../services/backendApi';
 import axios from 'axios'
 
@@ -7,21 +7,24 @@ import camera from '../../assets/camera.svg';
 import './styles.css';
 
 export default function New({history}) {
-    const [userId, setUserId] = useState('5ddda95251d90300133a6cf6');
-    const [gameId, setGameId] = useState('65498761');
+    const [userId, setUserId] = useState(localStorage.getItem('userId'));
+    const [gameId, setGameId] = useState(history.location.gameId);
     const [gameName, setGameName] = useState('');
     const [gameImageUrl, setGameImageUrl] = useState('');
     const [gamePublishedDate, setGamePublishedDate] = useState('');
     const [eventName, setEventName] = useState('');
     const [eventLocation, setEventLocation] = useState('');
-    const [eventDate, setEventDate] = useState(0);
+    const [eventDate, setEventDate] = useState('yyyy-MM-dd');
     const [eventNumOfPlayers, setEventNumOfPlayers] = useState(0);
     const [eventDuration, setEventDuration] = useState(0);
 
+    useEffect(() => {
+        console.log(gameId)
+    }, [])
+
     async function handleSubmit(event){
         event.preventDefault();
-        console.log('trying')
-        console.log(userId, eventName, gameId, eventLocation, eventDate, eventNumOfPlayers, eventDuration)
+
         try{
         const response = await backendApi.post('/events/create', {
             hostId: userId,
@@ -33,26 +36,11 @@ export default function New({history}) {
             duration: eventDuration
         });
         
-            /*const response = await axios({
-            method: 'post',
-            url: 'http://localhost:5000/events/create',
-            data:{
-                hostId: userId,
-                eventName: eventName,
-                gameId: gameId,
-                location: eventLocation,
-                eventDate: eventDate,
-                numOfPlayers: eventNumOfPlayers,
-                duration: eventDuration
-            }
-        });*/
-        
-        console.log("deu certo")
         console.log(response.data)
+        history.push('/dashboard');
 
-        //history.push('/dashboard');
         }catch(e){
-        //console.log(e)
+        console.log(e)
         }
     }
 

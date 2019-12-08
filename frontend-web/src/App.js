@@ -4,12 +4,16 @@ import './App.css';
 import Logo from './assets/logo.svg';
 
 import Routes from './routes'
+import Toolbar from './components/Toolbar/Toolbar'
 
 function App() {
   return (
     <div className="container">
-      <img src={Logo} alt="AirCnC"/>
+      <a href="/"><img src={Logo} alt="AirCnC" href="/"/></a>
 
+      <div className="toolbar">
+        <Toolbar />
+      </div>
       <div className="content">
         <Routes/>  
       </div>

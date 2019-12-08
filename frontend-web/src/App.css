@@ -31,10 +31,14 @@ body, input, button {
   align-items: center;
 }
 
+.toolbar {
+  margin-top: 10px;
+}
+
 .content {
   width: 100%;
   background: #ffffff;
-  margin-top: 50px;
+  margin-top: 15px;
   border-radius: 4px;
   padding: 30px;
 }

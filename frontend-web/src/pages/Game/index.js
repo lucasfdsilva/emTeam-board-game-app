@@ -53,7 +53,7 @@ export default function Game ({history}) {
           </li>
         </ul>
 
-        <Link to="/register_event" params={{ gameId: gameId }}>
+        <Link to={{ pathname: "/register_event", gameId: gameId }}>
           <button className="btn">Host Event</button>
         </Link>
 
