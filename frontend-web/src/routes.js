@@ -13,6 +13,8 @@ import Logout from './pages/Logout'
 import ForgotPassword from './pages/ForgotPassword'
 import UpdatePassword from './pages/UpdatePassword'
 import DeleteUser from './pages/DeleteUser'
+import ParticipantProfile from './pages/ParticipantProfile'
+import UpdateEvent from './pages/UpdateEvent'
 
 export default function Routes(){
     return (
@@ -30,6 +32,8 @@ export default function Routes(){
                 <Route path='/forgot_password' exact component={ForgotPassword}/>
                 <Route path='/update_password' exact component={UpdatePassword}/>
                 <Route path='/user/delete' exact component={DeleteUser}/>
+                <Route path='/participant/profile' exact component={ParticipantProfile}/>
+                <Route path='/event/update' exact component={UpdateEvent}/>
             </Switch>
         </BrowserRouter>
     )

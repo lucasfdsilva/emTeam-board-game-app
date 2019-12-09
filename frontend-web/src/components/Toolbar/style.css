@@ -3,7 +3,7 @@
 }
 
 .toolbar {
-  width: 100%;
+  width: 123%;
   background: #812a2a;
 }
 
@@ -21,7 +21,7 @@
 }
 
 .toolbar_navigation-items li {
-  padding: 0 2.2rem;
+  padding: 0 4.5rem;
 }
 
 .toolbar_navigation-items a{

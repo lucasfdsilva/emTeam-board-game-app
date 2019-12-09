@@ -1,20 +1,33 @@
+strong{
+    font-size: 20px;
+}
+
 ul.game-list{
     width: 100%;
     list-style: none;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-gap: 20px;
-    margin-bottom: 30px;
+    margin-bottom: 5px;
+    margin-top: 0px;
 }
 
 ul.game-list li{
     display: flex;
     flex-direction: column;
+    background-color: rgb(218, 98, 98);
+    width: 112%;
+    cursor: pointer;
+    border-radius: 7px;
+}
+
+ul.game-list li:hover{
+    background: #e14f50;
 }
 
 ul.game-list li header{
     width: 100%;
-    height: 120px;
+    height: 145px;
     background-size: cover;
     border-radius: 4px;
 }
@@ -22,10 +35,35 @@ ul.game-list li header{
 ul.game-list li strong{
     margin-top:10px;
     font-size:18px;
-    color:#444;
+    color:rgb(253, 253, 253);
 }
 
 ul.game-list li span{
     font-size:14px;
-    color: #999;
+    color: rgb(250, 250, 250);
 }
+
+div.search input {
+    width: 75%;
+    margin-bottom: 20px;
+    height: 29px;
+    border-radius: 5px;
+}
+
+div.search button:hover{
+    background: #e14f50;
+}
+
+div.search button {
+    border: 0;
+    border-radius: 2px;
+    width: 25% !important;
+    height: 30px;
+    padding: 0px;
+    font-size: 16px;
+    font-weight: bold;
+    background: #f05a5b;
+    color: #ffffff;
+    cursor: pointer;
+}
+

@@ -10,6 +10,7 @@ export default function Game ({history}) {
   const [gameName, setGameName] = useState(history.location.gameName);
   const [gameImageUrl, setGameImageUrl] = useState('');
   const [gamePublishedDate, setGamePublishedDate] = useState('');
+  const [events, setEvents] = useState([]);
 
   useEffect(() => {
     async function loadGameDetails() {
@@ -34,13 +35,31 @@ export default function Game ({history}) {
         response.data.games.forEach(element => {
           setGamePublishedDate(element.year_published)  
         })
+
+        const responseEvents = await backendApi.get(`/events/game/${gameId}`);
+
+        if(responseEvents.data.message.length > 0){
+          setEvents(responseEvents.data.message);
+          console.log("Added Events", responseEvents.data.message)
+        }
+
+        if(events.length <= 0){
+          console.log("No events for this game")
+        }
         
       } catch (e) {
-        console.log('External Board Games is API is currently unnavailable , please try again later')
+        console.log('Error loading Game Information')
       }
     }
     loadGameDetails();
   }, []);
+
+  async function goToEventPage(eventId){
+    history.push({
+      pathname: '/event/profile',
+      eventId: eventId
+    })
+  }
 
 
   return (
@@ -57,9 +76,16 @@ export default function Game ({history}) {
           <button className="btn">Host Event</button>
         </Link>
 
-        <Link to='/events/game' params={{ gameId: gameId }}>
-          <button className="btn">See Available Events</button>
-        </Link>
+        <label htmlFor="availableEvents">Available Events for this Game</label>
+          <ul className="event-list">
+          {events.map(event => (
+            <li key={event._id} onClick={() => goToEventPage(event._id)}>
+              <strong>{event.eventName}</strong>
+              <span>{event.gameId}</span>
+            </li>
+          ))}
+        </ul>
+
 
       </>
     )

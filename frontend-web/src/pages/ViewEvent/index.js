@@ -15,6 +15,7 @@ export default function LoadEvent({ history }) {
   const [duration, setDuration] = useState(0);
   const [eventDate, setEventDate] = useState('')
   const [participantsProfiles, setParticipantsProfiles] = useState([]);
+  const [isTheHost, setIsTheHost] = useState(false);
 
   useEffect(() => {
     async function loadEvent() {
@@ -31,6 +32,10 @@ export default function LoadEvent({ history }) {
         setParticipantsProfiles(response.data.message.participantsProfiles);
 
         console.log(response.data.message)
+
+        if(userId == response.data.message.hostId){
+          setIsTheHost(true);
+        }
 
       } catch (e) {
         console.log(e);
@@ -64,9 +69,17 @@ export default function LoadEvent({ history }) {
     console.log(responseLeaveEvent.data);
 
     setTimeout(() => {alert("Leaving Event"); }, 500)
-    /*history.push({
-      pathname: '/users/profile'
-    });*/
+    history.push({
+      pathname: '/dashboard'
+    });
+  }
+
+  async function editEvent(e){
+    e.preventDefault();
+    history.push({
+      pathname: '/event/update',
+      eventId: eventId
+    });
   }
 
   return (
@@ -109,6 +122,10 @@ export default function LoadEvent({ history }) {
         <button onClick={(e) => leaveEvent(e)} className="btn">
           Leave Event
         </button>
+
+        {isTheHost && (<button onClick={(e) => editEvent(e)} className="btn">
+          Edit Event
+        </button>)}
 
       </form>
 

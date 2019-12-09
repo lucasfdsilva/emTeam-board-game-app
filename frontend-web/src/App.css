@@ -23,7 +23,7 @@ body, input, button {
 }
 
 .container {
-  margin: 80px auto 0;
+  margin: 15px auto 0;
   max-width: 450px;
   width: 100%;
   display: flex;
@@ -32,11 +32,12 @@ body, input, button {
 }
 
 .toolbar {
-  margin-top: 10px;
+  margin-top: -10px;
+  margin-left: -42px;
 }
 
 .content {
-  width: 100%;
+  width: 150%;
   background: #ffffff;
   margin-top: 15px;
   border-radius: 4px;
@@ -46,7 +47,7 @@ body, input, button {
 .content > p {
   font-size: 22px;
   line-height: 30px;
-  margin-bottom: 10%;
+  margin-bottom: 3%;
 }
 
 .content form {
@@ -55,8 +56,8 @@ body, input, button {
 }
 
 .content form label{
-  font-size: 14px;
-  color: #444444;
+  font-size: 18px;
+  color: #858181;
   font-weight: bold;
   margin-bottom: 8px;
 }
@@ -73,7 +74,8 @@ body, input, button {
   border-radius: 2px;
   height: 45px;
   padding: 0 15px;
-  font-size: 16px;
+  font-size: 18px;
+  width: 100%;
 }
 
 .content button.btn {

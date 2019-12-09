@@ -4,34 +4,32 @@ import backendApi from "../../services/backendApi";
 import boardGamesApi from "../../services/boardGamesApi";
 import Game from '../Game'
 
-
 import "./style.css";
 
-export default function Dashboard( {history} ) {
+export default function Dashboard( {history, screenProps} ) {
   const [games, setGames,] = useState([]);
-  const [errorMessage, setErrorMessage] = useState('');
+  const [name, setName] = useState('');
   
 
-  useEffect(() => {
-    async function loadGames() {
-      try {
-        const response = await boardGamesApi.get(
-          "/search?order_by=popularity&ascending=false",
-          {
-            params: {
-              limit: 10,
-              client_id: "SB1VGnDv7M"
-            }
+  async function loadGames(searchName) {
+    try {
+      const response = await boardGamesApi.get("/search?order_by=popularity&ascending=false",
+        {
+          params: {
+            limit: 15,
+            name: searchName,
+            client_id: "SB1VGnDv7M"
           }
-        );
-        setGames(response.data.games);
-      } catch (e) {
-        setErrorMessage("External Board Games is API is currently unnavailable , please try again later");
-      }
+        }
+      );
+      setGames(response.data.games);
+    } catch (e) {
+      console.log(e);
     }
-    loadGames();
-    setErrorMessage("papai")
-    console.log(errorMessage)
+  }
+
+  useEffect(() => {
+    loadGames('');
   }, []);
 
   function goToGamePage(gameId){
@@ -43,6 +41,20 @@ export default function Dashboard( {history} ) {
 
   return (
     <>
+    <div className="search">
+      <input 
+        placeholder="Search Games"
+        className="searchBar"
+        value={name}
+        onChange={event => setName(event.target.value)}
+      />
+
+      
+        <button onClick={() => loadGames(name)}>Search Games</button>
+      </div>
+
+      <strong className="popular">Most Popular Games</strong>
+
       <ul className="game-list">
         {games.map(game => (
           <li key={game.id} onClick={() => goToGamePage(game.id)}>
@@ -52,10 +64,6 @@ export default function Dashboard( {history} ) {
           </li>
         ))}
       </ul>
-
-      <Link to="/new">
-        <button className="btn">Register a new spot</button>
-      </Link>
     </>
   );
 }
