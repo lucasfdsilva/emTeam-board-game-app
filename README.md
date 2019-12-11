@@ -6,9 +6,9 @@ http://apiboardgeek.co.uk
 <b>Aptoide App Store (Most up-to-date version):</b> https://boardgeek.en.aptoide.com/
 
 <h2>Run Backend Locally:</h2>
-<code>cd backend</code>
-<code>npm install</code>
-<code>npm run devStart</code>
+<code>cd backend</code></br>
+<code>npm install</code></br>
+<code>npm run devStart</code></br>
 <code>Application will listen to Port 5000 if no System Env is configured.</code>
 <br>
 
