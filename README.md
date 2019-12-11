@@ -9,21 +9,18 @@ http://apiboardgeek.co.uk
 <code>cd backend</code></br>
 <code>npm install</code></br>
 <code>npm run devStart</code></br>
-<code>Application will listen to Port 5000 if no System Env is configured.</code>
-<br>
+<code>Application will listen to Port 5000 if no System Env is configured.</code></br>
 
 <h2>Run Mobile Locally:</h2>
-<code>npm install --global expo</code>
-<code>cd frontend-mobile</code>
-<code>npm install</code>
-<code>npm run start</code>
-<br>
+<code>npm install --global expo</code></br>
+<code>cd frontend-mobile</code></br>
+<code>npm install</code></br>
+<code>npm run start</code></br>
 
 <h2>Run Web App Locally:</h2>
-<code>cd frontend-web</code>
-<code>npm install</code>
-<code>npm run start</code>
-<br>
+<code>cd frontend-web</code></br>
+<code>npm install</code></br>
+<code>npm run start</code></br>
 
 <h2>Backend API Methods</h2>
 
