@@ -1,3 +1,10 @@
+<h2>Backend API Available at:</h2>
+http://apiboardgeek.co.uk
+
+<h2>Mobile Application Available at:</h2>
+<b>Google Play:</b> https://play.google.com/store/apps/details?id=com.emteam.boardgeek
+<b>Aptoide App Store (Most up-to-date version):</b> https://boardgeek.en.aptoide.com/
+
 <h1>Backend API Methods</h1>
 
 <h2>Users</h2>
