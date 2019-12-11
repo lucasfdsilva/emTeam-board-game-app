@@ -5,6 +5,26 @@ http://apiboardgeek.co.uk
 <b>Google Play:</b> https://play.google.com/store/apps/details?id=com.emteam.boardgeek</br>
 <b>Aptoide App Store (Most up-to-date version):</b> https://boardgeek.en.aptoide.com/
 
+<h2>Run Backend Locally:</h2>
+<code>cd backend</code>
+<code>npm install</code>
+<code>npm run devStart</code>
+<code>Application will listen to Port 5000 if no System Env is configured.</code>
+<br>
+
+<h2>Run Mobile Locally:</h2>
+<code>npm install --global expo</code>
+<code>cd frontend-mobile</code>
+<code>npm install</code>
+<code>npm run start</code>
+<br>
+
+<h2>Run Web App Locally:</h2>
+<code>cd frontend-web</code>
+<code>npm install</code>
+<code>npm run start</code>
+<br>
+
 <h2>Backend API Methods</h2>
 
 <h2>Users</h2>
