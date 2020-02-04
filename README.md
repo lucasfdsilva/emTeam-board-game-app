@@ -1,6 +1,3 @@
-<h2>Backend API Available at:</h2>
-http://3.248.36.112
-
 <h2>Mobile Application Available at:</h2>
 <b>Google Play:</b> https://play.google.com/store/apps/details?id=com.emteam.boardgeek</br>
 <b>Aptoide App Store (Most up-to-date version):</b> https://boardgeek.en.aptoide.com/
