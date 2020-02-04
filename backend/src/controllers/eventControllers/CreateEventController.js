@@ -9,8 +9,7 @@ module.exports = {
         const { hostId, eventName, gameId, location, numOfPlayers, eventDate, duration } = req.body;
 
         if (!hostId || !eventName || !gameId || !location || !numOfPlayers || !eventDate || !duration) {
-            res.status(400).json({ message: "ERROR: Missing Required Information from Request" });
-            console.log("faltando informacao")
+            res.status(400).json({ message: "ERROR: Missing Required Information from Create Event Request" });
         }
 
         //TEMPORARY CHECK: See if user id passed for host matches one from DB.
