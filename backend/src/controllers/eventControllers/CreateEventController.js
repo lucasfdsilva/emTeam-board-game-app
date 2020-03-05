@@ -16,7 +16,7 @@ module.exports = {
         let userFromDB = await User.findOne({ _id: hostId });
 
         //If not, return error.
-        if(!userFromDB) return res.status(404).json({ Message: `Can't find entered user in database.` });
+        if(!userFromDB) return res.status(404).json({ Message: `Can't find user in database.` });
 
         //If successful, attempt to create event with passed params.
         else{
