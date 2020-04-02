@@ -11,7 +11,7 @@ module.exports = {
         }
 
         let eventFromDB = await Event.findOne({ _id: eventId });        
-        if(!eventFromDB) return res.status(404).send({Message: 'ERROR: Unable to locate an event with provided ID.'});
+        if(!eventFromDB) return res.status(404).send({Message: 'ERROR: Unable to locate the event with provided ID.'});
         else{                 
             try{  
                 eventFromDB.remove();
