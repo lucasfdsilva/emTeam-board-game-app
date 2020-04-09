@@ -29,7 +29,7 @@ module.exports = {
       }
       
       if (eventFromDB.length == 0){
-        return res.status(404).send({ Message: "Unable to locate an event with provided game ID." });
+        return res.status(404).send({ Message: "Cannot locate an event with provided game ID." });
       }  
       
       res.status(200).json({message: eventFromDB});
