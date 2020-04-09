@@ -22,7 +22,7 @@ module.exports = {
   
             if(user){ 
                 event.participantsProfiles.push(user);
-                console.log('We Found user, adding to local users array'); 
+                console.log('User Found, adding to local users array'); 
             }
           }//End of loop through joined events
         }
