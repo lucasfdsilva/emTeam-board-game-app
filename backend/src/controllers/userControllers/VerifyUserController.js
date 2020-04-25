@@ -20,7 +20,7 @@ module.exports = {
 
         await userFromDB.save();
 
-        res.status(200).json({ message: "User email verified succesfully" });
+        res.status(200).json({ message: "Thank You: User email verified succesfully" });
 
       }
     } catch {
