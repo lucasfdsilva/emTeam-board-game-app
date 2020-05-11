@@ -12,7 +12,7 @@ module.exports = {
     try {
 
       if (!firstName || !lastName || !email || !password) {
-        res.status(400).json({ message: "ERROR: Missing Required Information from Request" });
+        res.status(400).json({ message: "Missing Required Information from Request" });
       }
 
       let userFromDB = await User.findOne({ email: email });
